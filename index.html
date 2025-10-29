@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Questionário NEX</title>
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("dYgCUjz1O8EqE9rM2");
+        })();
+    </script>
+    <style>
+        /* Estilos CSS Integrados */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #141F24; /* Cor de fundo do corpo */
+            color: #E0E0E0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #1a2630; /* Cor de fundo principal */
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        header {
+            text-align: center;
+            padding: 20px 0;
+            border-bottom: 2px solid #9ACA95; /* Cor de destaque */
+            margin-bottom: 20px;
+        }
+        header h1 {
+            color: #9ACA95; /* Cor de destaque */
+            margin: 0;
+            font-size: 2em;
+        }
+        nav#sumario {
+            background-color: #2a3843;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        nav#sumario ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        nav#sumario ul li {
+            margin: 0;
+            padding: 5px 10px;
+            border-bottom: 1px solid #3a4853; /* Linha divisória */
+        }
+        nav#sumario ul li:last-child {
+            border-bottom: none;
+        }
+        nav#sumario ul li a {
+            text-decoration: none;
+            color: #E0E0E0;
+            display: block;
+            transition: background-color 0.3s;
+        }
+        nav#sumario ul li a:hover {
+            background-color: #3a4853; /* Cor de destaque */
+        }
+        .secao {
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 1px solid #3a4853;
+            border-radius: 5px;
+            background-color: #1f2a35;
+        }
+        .secao h2 {
+            color: #9ACA95; /* Cor de destaque */
+            border-bottom: 1px solid #3a4853;
+            padding-bottom: 10px;
+            margin-top: 0;
+        }
+        .campo {
+            margin-bottom: 15px;
+            padding: 10px;
+            border: 1px solid #3a4853;
+            border-radius: 3px;
+        }
+        .campo label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            color: #E0E0E0;
+        }
+        .campo input[type="text"],
+        .campo input[type="number"],
+        .campo input[type="email"],
+        .campo textarea,
+        .campo select {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #555;
+            border-radius: 3px;
+            background-color: #2a3843;
+            color: #E0E0E0;
+        }
+        .campo-dimensao {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        .campo-dimensao > div {
+            flex: 1 1 150px;
+        }
+        .campo-dimensao label {
+            font-weight: normal;
+        }
+        .opcoes-checkboxes label {
+            display: inline-block;
+            margin-right: 15px;
+            font-weight: normal;
+        }
+        .opcoes-checkboxes input[type="checkbox"] {
+            margin-right: 5px;
+        }
+        .botoes {
+            text-align: center;
+            margin-top: 30px;
+        }
+        .botoes button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            background-color: #9ACA95; /* Cor de destaque */
+            color: #1a2630;
+            transition: background-color 0.3s;
+        }
+        .botoes button:hover {
+            background-color: #7BB874;
+        }
+
+        /* Responsividade */
+        @media (max-width: 768px) {
+            .campo-dimensao > div {
+                flex: 1 1 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <header>
+        <h1>Questionário NEX - Soluções Inteligentes para a Indústria do Vidro</h1>
+        <p>Preencha as informações relevantes para o seu processo de cotação. Utilize o sumário para navegar entre as máquinas.</p>
+    </header>
+
+    <nav id="sumario">
+        <h2>Sumário de Máquinas</h2>
+        <ul>
+            <li><a href="#mesa-corte">1. Linha de Corte (Mesa de Corte)</a></li>
+            <li><a href="#laser-sf">2. Laser Super Fast</a></li>
+            <li><a href="#laser-low-e">3. Laser Desbaste LOW-E</a></li>
+            <li><a href="#lavadora">4. Lavadora (Horizontal e Vertical)</a></li>
+            <li><a href="#bilateral">5. Bilateral</a></li>
+            <li><a href="#retilinea">6. Lapidadora vertical / Bizeladora</a></li>
+            <li><a href="#cnc-horizontal">7. CNC Horizontal</a></li>
+            <li><a href="#cnc-vertical">8. CNC Vertical</a></li>
+            <li><a href="#fast-cnc">9. CNC de Lapidação Rápida (Fast CNC)</a></li>
+            <li><a href="#laser-galvo">10. Laser Galvo Furação</a></li>
+            <li><a href="#serigrafia">11. Serigrafia</a></li>
+            <li><a href="#tempera">12. Forno de Têmpera</a></li>
+            <li><a href="#laminado">13. Linha de Laminado</a></li>
+            <li><a href="#insulado">14. Linha de Insulado</a></li>
+            <li><a href="#automacao">15. Automação</a></li>
+        </ul>
+    </nav>
+
+    <form id="questionario-form">
+
+        <!-- SEÇÃO DADOS DO CLIENTE (NOVO) -->
+        <div id="dados-cliente" class="secao" data-maquina="Dados do Cliente">
+            <h2>Dados do Cliente</h2>
+            <p>Preencha as informações de contato para que a NEX possa retornar o contato.</p>
+
+            <div class="campo">
+                <label for="cliente_nome">Nome do Cliente:</label>
+                <input type="text" id="cliente_nome" name="cliente_nome" placeholder="Nome Completo" required>
+            </div>
+            <div class="campo">
+                <label for="cliente_empresa">Empresa:</label>
+                <input type="text" id="cliente_empresa" name="cliente_empresa" placeholder="Nome da Empresa" required>
+            </div>
+            <div class="campo">
+                <label for="cliente_email">Email:</label>
+                <input type="email" id="cliente_email" name="cliente_email" placeholder="email@exemplo.com" required>
+            </div>
+        </div>
+        <!-- FIM SEÇÃO DADOS DO CLIENTE -->
+
+        <!-- SEÇÃO BILATERAL -->
+        <div id="bilateral" class="secao" data-maquina="Bilateral">
+            <h2>Bilateral</h2>
+            <p>Máquina para lapidação e polimento de vidros.</p>
+
+
+
+            <!-- DIMENSÕES OBRIGATÓRIAS -->
+            <div class="campo">
+                <label>DIMENSÕES (Máximas e Mínimas) - OBRIGATÓRIO:</label>
+                <div class="campo-dimensao">
+                    <div><label for="bilateral_dim_max_c">Máx. Comp. (mm):</label><input type="number" id="bilateral_dim_max_c" name="bilateral_dim_max_c" placeholder="C Máx"></div>
+                    <div><label for="bilateral_dim_max_l">Máx. Larg. (mm):</label><input type="number" id="bilateral_dim_max_l" name="bilateral_dim_max_l" placeholder="L Máx"></div>
+                    <div><label for="bilateral_dim_max_e">Máx. Esp. (mm):</label><input type="number" id="bilateral_dim_max_e" name="bilateral_dim_max_e" placeholder="E Máx"></div>
+                    <div><label for="bilateral_dim_min_c">Mín. Comp. (mm):</label><input type="number" id="bilateral_dim_min_c" name="bilateral_dim_min_c" placeholder="C Mín"></div>
+                    <div><label for="bilateral_dim_min_l">Mín. Larg. (mm):</label><input type="number" id="bilateral_dim_min_l" name="bilateral_dim_min_l" placeholder="L Mín"></div>
+                    <div><label for="bilateral_dim_min_e">Mín. Esp. (mm):</label><input type="number" id="bilateral_dim_min_e" name="bilateral_dim_min_e" placeholder="E Mín"></div>
+                </div>
+            </div>
+            <!-- FIM DIMENSÕES OBRIGATÓRIAS -->
+
+            <div class="campo">
+                <label for="bilateral_q1">1 - Qual o tipo de lapidação?</label>
+                <select id="bilateral_q1" name="bilateral_q1">
+                    <option value="">Selecione</option>
+                    <option value="PERIFÉRICA">PERIFÉRICA (Flat Edge)</option>
+                    <option value="COPO">COPO (Filetada 45º/Reta/T Edge)</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label>2 - Qual o formato da linha?</label>
+                <div><input type="radio" id="bilateral_q2_l" name="bilateral_q2_formato" value="L"> <label for="bilateral_q2_l" style="display: inline; margin-left: 5px;">L</label></div>
+                <div><input type="radio" id="bilateral_q2_i" name="bilateral_q2_formato" value="I"> <label for="bilateral_q2_i" style="display: inline; margin-left: 5px;">I</label></div>
+                <div><input type="radio" id="bilateral_q2_u" name="bilateral_q2_formato" value="U"> <label for="bilateral_q2_u" style="display: inline; margin-left: 5px;">U</label></div>
+            </div>
+
+            <div class="campo">
+                <label for="bilateral_q3_tipo_vidro">3 - Qual o tipo do vidro?</label>
+                <input type="text" id="bilateral_q3_tipo_vidro" name="bilateral_q3_tipo_vidro" placeholder="Ex: Comum, Temperado, Laminado">
+            </div>
+
+            <div class="campo">
+                <label>4 - Que tipo de canto?</label>
+                <div><input type="radio" id="bilateral_q4_reto" name="bilateral_q4_tipo_canto" value="Reto"> <label for="bilateral_q4_reto" style="display: inline; margin-left: 5px;">Reto</label></div>
+                <div><input type="radio" id="bilateral_q4_chanfro" name="bilateral_q4_tipo_canto" value="Chanfro"> <label for="bilateral_q4_chanfro" style="display: inline; margin-left: 5px;">Chanfro</label></div>
+                <div><input type="radio" id="bilateral_q4_raio" name="bilateral_q4_tipo_canto" value="Raio (moeda)"> <label for="bilateral_q4_raio" style="display: inline; margin-left: 5px;">Raio (moeda)</label></div>
+            </div>
+
+            <!-- ITEM 5 MODIFICADO -->
+            <div class="campo">
+                <label>5 - Polimento:</label>
+                <div style="margin-bottom: 10px;">
+                    <label>5.1 - Com ou sem polimento?</label>
+                    <div>
+                        <input type="radio" id="bilateral_q4_sim" name="bilateral_q4_polimento_sim_nao" value="Sim"> <label for="bilateral_q4_sim" style="display: inline; margin-left: 5px;">Sim</label>
+                        <input type="radio" id="bilateral_q4_nao" name="bilateral_q4_polimento_sim_nao" value="Não" style="margin-left: 20px;"> <label for="bilateral_q4_nao" style="display: inline; margin-left: 5px;">Não</label>
+                    </div>
+                </div>
+                <div>
+                    <label for="bilateral_q5_nivel_acabamento">5.2 - Qual o nível de acabamento do polimento? (Quanto melhor o acabamento, mais motores)</label>
+                    <input type="text" id="bilateral_q5_nivel_acabamento" name="bilateral_q5_nivel_acabamento" placeholder="Ex: Acabamento de alto brilho">
+                </div>
+            </div>
+            <!-- FIM ITEM 5 MODIFICADO -->
+
+            <!-- ITEM 6 MODIFICADO -->
+            <div class="campo">
+                <label for="bilateral_q6">6 - Qual a aresta de corte para lapidação (sobrematerial)? Informe largura em mm:</label>
+                <input type="number" id="bilateral_q6" name="bilateral_q6" placeholder="Largura em mm (somente números)">
+            </div>
+            <!-- FIM ITEM 6 MODIFICADO -->
+
+            <div class="campo">
+                <label>Opcionais:</label>
+                <div class="opcoes-checkboxes">
+                    <label><input type="checkbox" name="bilateral_opc" value="Mesa detectora de tamanho e espessura"> Mesa detectora de tamanho e espessura</label>
+                    <label><input type="checkbox" name="bilateral_opc" value="Posicionadores dos vidros (bolinha maluca) Raffle wheel"> Posicionadores dos vidros (bolinha maluca) Raffle wheel</label>
+                    <label><input type="checkbox" name="bilateral_opc_quebra" value="Quebra canto"> Quebra canto</label>
+                    <label><input type="checkbox" name="bilateral_opc_raio" value="Raio em canto"> Raio em canto</label>
+                    <label><input type="checkbox" name="bilateral_opc" value="Carregador e descarregador"> Carregador e descarregador</label>
+                    <label><input type="checkbox" name="bilateral_opc" value="Lavadora"> Lavadora</label>
+                    <label><input type="checkbox" name="bilateral_opc" value="Removedor de Low-e Edge Deletion"> Removedor de Low-e Edge Deletion</label>
+                    <label><input type="checkbox" name="bilateral_opc" value="Integração com o ERP (Leitor código de barras)"> Integração com o ERP (Leitor código de barras)</label>
+                    <label><input type="checkbox" name="bilateral_opc" value="Automação (mesa a laser marcação DMCode + Sofware ERP/MES)"> Automação (mesa a laser marcação DMCode + Sofware ERP/MES)</label>
+                </div>
+            </div>
+        </div>
+        <!-- FIM SEÇÃO BILATERAL -->
+
+        <!-- SEÇÃO LASER DESBASTE LOW-E -->
+        <div id="laser-low-e" class="secao" data-maquina="Laser Desbaste Low-E">
+            <h2>Laser Desbaste Low-E</h2>
+            <p>Máquina para remoção da camada de Low-E.</p>
+
+            <!-- DIMENSÕES OBRIGATÓRIAS -->
+            <div class="campo">
+                <label>DIMENSÕES (Máximas e Mínimas) - OBRIGATÓRIO:</label>
+                <div class="campo-dimensao">
+                    <div><label for="laser-low-e_dim_max_c">Máx. Comp. (mm):</label><input type="number" id="laser-low-e_dim_max_c" name="laser-low-e_dim_max_c" placeholder="C Máx"></div>
+                    <div><label for="laser-low-e_dim_max_l">Máx. Larg. (mm):</label><input type="number" id="laser-low-e_dim_max_l" name="laser-low-e_dim_max_l" placeholder="L Máx"></div>
+                    <div><label for="laser-low-e_dim_max_e">Máx. Esp. (mm):</label><input type="number" id="laser-low-e_dim_max_e" name="laser-low-e_dim_max_e" placeholder="E Máx"></div>
+                    <div><label for="laser-low-e_dim_min_c">Mín. Comp. (mm):</label><input type="number" id="laser-low-e_dim_min_c" name="laser-low-e_dim_min_c" placeholder="C Mín"></div>
+                    <div><label for="laser-low-e_dim_min_l">Mín. Larg. (mm):</label><input type="number" id="laser-low-e_dim_min_l" name="laser-low-e_dim_min_l" placeholder="L Mín"></div>
+                    <div><label for="laser-low-e_dim_min_e">Mín. Esp. (mm):</label><input type="number" id="laser-low-e_dim_min_e" name="laser-low-e_dim_min_e" placeholder="E Mín"></div>
+                </div>
+            </div>
+            <!-- FIM DIMENSÕES OBRIGATÓRIAS -->
+
+            <!-- NOVOS ITENS -->
+            <div class="campo">
+                <label for="laser_low_e_q1_tipo_vidro">1 - Qual é o tipo do vidro (Incolor, verde, etc...)?</label>
+                <input type="text" id="laser_low_e_q1_tipo_vidro" name="laser_low_e_q1_tipo_vidro" placeholder="Ex: Incolor, Verde, Bronze, Low-E">
+            </div>
+            <!-- FIM NOVOS ITENS -->
+
+            <!-- ITEM 2 MODIFICADO (Aplicabilidade) -->
+            <div class="campo">
+                <label>2 - Aplicabilidade (Selecione todas as opções aplicáveis):</label>
+                <div class="opcoes-checkboxes">
+                    <label><input type="checkbox" name="laser_low_e_q2_aplicabilidade" value="Circuito elétrico"> Circuito elétrico</label>
+                    <label><input type="checkbox" name="laser_low_e_q2_aplicabilidade" value="Desbaste de borda"> Desbaste de borda</label>
+                    <label><input type="checkbox" name="laser_low_e_q2_aplicabilidade" value="Desenhos em espelhos"> Desenhos em espelhos</label>
+                    <label><input type="checkbox" name="laser_low_e_q2_aplicabilidade" value="Furação"> Furação</label>
+                </div>
+            </div>
+            <!-- FIM ITEM 2 MODIFICADO -->
+
+            <div class="campo">
+                <label for="laser_low_e_q3_diametro_furos">3 - Se furação, diâmetro dos furos:</label>
+                <input type="number" id="laser_low_e_q3_diametro_furos" name="laser_low_e_q3_diametro_furos" placeholder="Diâmetro em mm (somente números)">
+            </div>
+        </div>
+        <!-- FIM SEÇÃO LASER DESBASTE LOW-E -->
+
+        <!-- SEÇÃO LASER GALVO FURAÇÃO -->
+        <div id="laser-galvo" class="secao" data-maquina="Laser Galvo Furação">
+            <h2>Laser Galvo Furação</h2>
+            <p>Máquina para furação a laser.</p>
+
+            <!-- DIMENSÕES OBRIGATÓRIAS -->
+            <div class="campo">
+                <label>DIMENSÕES (Máximas e Mínimas) - OBRIGATÓRIO:</label>
+                <div class="campo-dimensao">
+                    <div><label for="laser-galvo_dim_max_c">Máx. Comp. (mm):</label><input type="number" id="laser-galvo_dim_max_c" name="laser-galvo_dim_max_c" placeholder="C Máx"></div>
+                    <div><label for="laser-galvo_dim_max_l">Máx. Larg. (mm):</label><input type="number" id="laser-galvo_dim_max_l" name="laser-galvo_dim_max_l" placeholder="L Máx"></div>
+                    <div><label for="laser-galvo_dim_max_e">Máx. Esp. (mm):</label><input type="number" id="laser-galvo_dim_max_e" name="laser-galvo_dim_max_e" placeholder="E Máx"></div>
+                    <div><label for="laser-galvo_dim_min_c">Mín. Comp. (mm):</label><input type="number" id="laser-galvo_dim_min_c" name="laser-galvo_dim_min_c" placeholder="C Mín"></div>
+                    <div><label for="laser-galvo_dim_min_l">Mín. Larg. (mm):</label><input type="number" id="laser-galvo_dim_min_l" name="laser-galvo_dim_min_l" placeholder="L Mín"></div>
+                    <div><label for="laser-galvo_dim_min_e">Mín. Esp. (mm):</label><input type="number" id="laser-galvo_dim_min_e" name="laser-galvo_dim_min_e" placeholder="E Mín"></div>
+                </div>
+            </div>
+            <!-- FIM DIMENSÕES OBRIGATÓRIAS -->
+
+            <!-- NOVOS ITENS -->
+            <div class="campo">
+                <label for="laser_galvo_q1_tipo_vidro">1 - Qual é o tipo de vidro?</label>
+                <input type="text" id="laser_galvo_q1_tipo_vidro" name="laser_galvo_q1_tipo_vidro" placeholder="Ex: Incolor, Low-E, etc.">
+            </div>
+            <div class="campo">
+                <label for="laser_galvo_q2_dim_furos">2 - Dimensões dos furos (máximo e mínimo) em mm:</label>
+                <input type="text" id="laser_galvo_q2_dim_furos" name="laser_galvo_q2_dim_furos" placeholder="Ex: Mínimo 5mm, Máximo 50mm (somente números)">
+            </div>
+            <div class="campo">
+                <label for="laser_galvo_q3_geometria">3 - Geometria (Círculo, quadrado, especial):</label>
+                <input type="text" id="laser_galvo_q3_geometria" name="laser_galvo_q3_geometria" placeholder="Ex: Círculo, Quadrado, Formato Especial">
+            </div>
+            <!-- FIM NOVOS ITENS -->
+
+            <div class="campo">
+                <label for="laser_galvo_q4">4 - Qual o sistema da máquina?</label>
+                <select id="laser_galvo_q4" name="laser_galvo_q4">
+                    <option value="">Selecione</option>
+                    <option value="Online">Online</option>
+                    <option value="Offline">Offline</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="laser_galvo_desenhos_especiais">5 - Desenhos especiais (Upload de Imagem/PDF):</label>
+                <input type="file" id="laser_galvo_desenhos_especiais" name="laser_galvo_desenhos_especiais" accept="image/*,.pdf">
+            </div>
+        </div>
+        <!-- FIM SEÇÃO LASER GALVO FURAÇÃO -->
+
+        <!-- SEÇÃO FAST CNC -->
+        <div id="fast-cnc" class="secao" data-maquina="Fast CNC">
+            <h2>Fast CNC</h2>
+            <p>Máquina CNC de alta velocidade para furação e fresagem.</p>
+
+            <!-- DIMENSÕES OBRIGATÓRIAS -->
+            <div class="campo">
+                <label>DIMENSÕES (Máximas e Mínimas) - OBRIGATÓRIO:</label>
+                <div class="campo-dimensao">
+                    <div><label for="fast-cnc_dim_max_c">Máx. Comp. (mm):</label><input type="number" id="fast-cnc_dim_max_c" name="fast-cnc_dim_max_c" placeholder="C Máx"></div>
+                    <div><label for="fast-cnc_dim_max_l">Máx. Larg. (mm):</label><input type="number" id="fast-cnc_dim_max_l" name="fast-cnc_dim_max_l" placeholder="L Máx"></div>
+                    <div><label for="fast-cnc_dim_max_e">Máx. Esp. (mm):</label><input type="number" id="fast-cnc_dim_max_e" name="fast-cnc_dim_max_e" placeholder="E Máx"></div>
+                    <div><label for="fast-cnc_dim_min_c">Mín. Comp. (mm):</label><input type="number" id="fast-cnc_dim_min_c" name="fast-cnc_dim_min_c" placeholder="C Mín"></div>
+                    <div><label for="fast-cnc_dim_min_l">Mín. Larg. (mm):</label><input type="number" id="fast-cnc_dim_min_l" name="fast-cnc_dim_min_l" placeholder="L Mín"></div>
+                    <div><label for="fast-cnc_dim_min_e">Mín. Esp. (mm):</label><input type="number" id="fast-cnc_dim_min_e" name="fast-cnc_dim_min_e" placeholder="E Mín"></div>
+                </div>
+            </div>
+            <!-- FIM DIMENSÕES OBRIGATÓRIAS -->
+
+            <div class="campo">
+                <label>1 - Carga / descarga automática?</label>
+                <div><input type="radio" id="fast_cnc_q1_sim" name="fast_cnc_q1_carga" value="Sim"> <label for="fast_cnc_q1_sim" style="display: inline; margin-left: 5px;">Sim</label></div>
+                <div><input type="radio" id="fast_cnc_q1_nao" name="fast_cnc_q1_carga" value="Não"> <label for="fast_cnc_q1_nao" style="display: inline; margin-left: 5px;">Não</label></div>
+            </div>
+
+            <div class="campo">
+                <label>2 - Corte e destaque automático integrado?</label>
+                <div><input type="radio" id="fast_cnc_q2_sim" name="fast_cnc_q2_corte" value="Sim"> <label for="fast_cnc_q2_sim" style="display: inline; margin-left: 5px;">Sim</label></div>
+                <div><input type="radio" id="fast_cnc_q2_nao" name="fast_cnc_q2_corte" value="Não"> <label for="fast_cnc_q2_nao" style="display: inline; margin-left: 5px;">Não</label></div>
+            </div>
+
+            <div class="campo">
+                <label>3 - Furação com broca diamantada integrada?</label>
+                <div><input type="radio" id="fast_cnc_q3_sim" name="fast_cnc_q3_furacao" value="Sim"> <label for="fast_cnc_q3_sim" style="display: inline; margin-left: 5px;">Sim</label></div>
+                <div><input type="radio" id="fast_cnc_q3_nao" name="fast_cnc_q3_furacao" value="Não"> <label for="fast_cnc_q3_nao" style="display: inline; margin-left: 5px;">Não</label></div>
+            </div>
+
+            <div class="campo">
+                <label for="fast_cnc_q4_desenhos">4 - Desenhos especiais:</label>
+                <input type="file" id="fast_cnc_q4_desenhos" name="fast_cnc_q4_desenhos" accept=".png,.jpg,.jpeg,.pdf">
+            </div>
+        </div>
+        <!-- FIM SEÇÃO FAST CNC -->
+
+        <!-- SEÇÃO CNC HORIZONTAL -->
+        <div id="cnc-horizontal" class="secao" data-maquina="CNC Horizontal">
+            <h2>CNC Horizontal</h2>
+            <p>Máquina CNC horizontal para furação, fresagem e lapidação.</p>
+
+            <!-- DIMENSÕES OBRIGATÓRIAS -->
+            <div class="campo">
+                <label>DIMENSÕES (Máximas e Mínimas) - OBRIGATÓRIO:</label>
+                <div class="campo-dimensao">
+                    <div><label for="cnc-horizontal_dim_max_c">Máx. Comp. (mm):</label><input type="number" id="cnc-horizontal_dim_max_c" name="cnc-horizontal_dim_max_c" placeholder="C Máx"></div>
+                    <div><label for="cnc-horizontal_dim_max_l">Máx. Larg. (mm):</label><input type="number" id="cnc-horizontal_dim_max_l" name="cnc-horizontal_dim_max_l" placeholder="L Máx"></div>
+                    <div><label for="cnc-horizontal_dim_max_e">Máx. Esp. (mm):</label><input type="number" id="cnc-horizontal_dim_max_e" name="cnc-horizontal_dim_max_e" placeholder="E Máx"></div>
+                    <div><label for="cnc-horizontal_dim_min_c">Mín. Comp. (mm):</label><input type="number" id="cnc-horizontal_dim_min_c" name="cnc-horizontal_dim_min_c" placeholder="C Mín"></div>
+                    <div><label for="cnc-horizontal_dim_min_l">Mín. Larg. (mm):</label><input type="number" id="cnc-horizontal_dim_min_l" name="cnc-horizontal_dim_min_l" placeholder="L Mín"></div>
+                    <div><label for="cnc-horizontal_dim_min_e">Mín. Esp. (mm):</label><input type="number" id="cnc-horizontal_dim_min_e" name="cnc-horizontal_dim_min_e" placeholder="E Mín"></div>
+                </div>
+            </div>
+            <!-- FIM DIMENSÕES OBRIGATÓRIAS -->
+
+            <div class="campo">
+                <label for="cnc_h_q1">1 - Qual o sistema da máquina?</label>
+                <select id="cnc_h_q1" name="cnc_h_q1">
+                    <option value="">Selecione</option>
+                    <option value="Online">Online</option>
+                    <option value="Offline">Offline</option>
+                </select>
+            </div>
+
+            <div class="campo">
+                <label for="cnc_h_q2_ferramentas">2 - Quantidade de ferramentas de troca automática:</label>
+                <input type="number" id="cnc_h_q2_ferramentas" name="cnc_h_q2_ferramentas" placeholder="Quantidade (somente números)">
+            </div>
+
+            <div class="campo">
+                <label>3 - Se offline, deseja carga e descarga automática?</label>
+                <div><input type="radio" id="cnc_h_q3_sim" name="cnc_h_q3" value="Sim"> <label for="cnc_h_q3_sim" style="display: inline; margin-left: 5px;">Sim</label></div>
+                <div><input type="radio" id="cnc_h_q3_nao" name="cnc_h_q3" value="Não"> <label for="cnc_h_q3_nao" style="display: inline; margin-left: 5px;">Não</label></div>
+            </div>
+
+            <div class="campo">
+                <label>Opcionais:</label>
+                <div class="opcoes-checkboxes">
+                    <label><input type="checkbox" name="cnc_h_opc" value="Lavadora"> Lavadora</label>
+                </div>
+            </div>
+        </div>
+        <!-- FIM SEÇÃO CNC HORIZONTAL -->
+
+        <!-- SEÇÃO CNC VERTICAL -->
+        <div id="cnc-vertical" class="secao" data-maquina="CNC Vertical">
+            <h2>CNC Vertical</h2>
+            <p>Máquina CNC vertical para furação, fresagem e lapidação.</p>
+
+            <!-- DIMENSÕES OBRIGATÓRIAS -->
+            <div class="campo">
+                <label>DIMENSÕES (Máximas e Mínimas) - OBRIGATÓRIO:</label>
+                <div class="campo-dimensao">
+                    <div><label for="cnc-vertical_dim_max_c">Máx. Comp. (mm):</label><input type="number" id="cnc-vertical_dim_max_c" name="cnc-vertical_dim_max_c" placeholder="C Máx"></div>
+                    <div><label for="cnc-vertical_dim_max_l">Máx. Larg. (mm):</label><input type="number" id="cnc-vertical_dim_max_l" name="cnc-vertical_dim_max_l" placeholder="L Máx"></div>
+                    <div><label for="cnc-vertical_dim_max_e">Máx. Esp. (mm):</label><input type="number" id="cnc-vertical_dim_max_e" name="cnc-vertical_dim_max_e" placeholder="E Máx"></div>
+                    <div><label for="cnc-vertical_dim_min_c">Mín. Comp. (mm):</label><input type="number" id="cnc-vertical_dim_min_c" name="cnc-vertical_dim_min_c" placeholder="C Mín"></div>
+                    <div><label for="cnc-vertical_dim_min_l">Mín. Larg. (mm):</label><input type="number" id="cnc-vertical_dim_min_l" name="cnc-vertical_dim_min_l" placeholder="L Mín"></div>
+                    <div><label for="cnc-vertical_dim_min_e">Mín. Esp. (mm):</label><input type="number" id="cnc-vertical_dim_min_e" name="cnc-vertical_dim_min_e" placeholder="E Mín"></div>
+                </div>
+            </div>
+            <!-- FIM DIMENSÕES OBRIGATÓRIAS -->
+
+            <div class="campo">
+                <label for="cnc_v_q1">1 - Qual o tipo de CNC Vertical?</label>
+                <input type="text" id="cnc_v_q1" name="cnc_v_q1" placeholder="Descreva o tipo">
+            </div>
+
+            <div class="campo">
+                <label for="cnc_v_q2_ferramentas">2 - Quantidade de ferramentas de troca automática:</label>
+                <input type="number" id="cnc_v_q2_ferramentas" name="cnc_v_q2_ferramentas" placeholder="Quantidade (somente números)">
+            </div>
+
+            <div class="campo">
+                <label>3 - Se offline, deseja carga e descarga automática?</label>
+                <div><input type="radio" id="cnc_v_q3_sim" name="cnc_v_q3" value="Sim"> <label for="cnc_v_q3_sim" style="display: inline; margin-left: 5px;">Sim</label></div>
+                <div><input type="radio" id="cnc_v_q3_nao" name="cnc_v_q3" value="Não"> <label for="cnc_v_q3_nao" style="display: inline; margin-left: 5px;">Não</label></div>
+            </div>
+
+            <div class="campo">
+                <label>Opcionais:</label>
+                <div class="opcoes-checkboxes">
+                    <label><input type="checkbox" name="cnc_v_opc" value="Lavadora"> Lavadora</label>
+                </div>
+            </div>
+        </div>
+        <!-- FIM SEÇÃO CNC VERTICAL -->
+
+        <!-- SEÇÃO LINHA DE CORTE -->
+        <div id="mesa-corte" class="secao" data-maquina="Linha de Corte">
+            <h2>Linha de Corte</h2>
+            <p>Mesa de corte de vidro.</p>
+
+            <!-- DIMENSÕES OBRIGATÓRIAS -->
+            <div class="campo">
+                <label>DIMENSÕES (Máximas e Mínimas) - OBRIGATÓRIO:</label>
+                <div class="campo-dimensao">
+                    <div><label for="mesa-corte_dim_max_c">Máx. Comp. (mm):</label><input type="number" id="mesa-corte_dim_max_c" name="mesa-corte_dim_max_c" placeholder="C Máx"></div>
+                    <div><label for="mesa-corte_dim_max_l">Máx. Larg. (mm):</label><input type="number" id="mesa-corte_dim_max_l" name="mesa-corte_dim_max_l" placeholder="L Máx"></div>
+                    <div><label for="mesa-corte_dim_max_e">Máx. Esp. (mm):</label><input type="number" id="mesa-corte_dim_max_e" name="mesa-corte_dim_max_e" placeholder="E Máx"></div>
+                    <div><label for="mesa-corte_dim_min_c">Mín. Comp. (mm):</label><input type="number" id="mesa-corte_dim_min_c" name="mesa-corte_dim_min_c" placeholder="C Mín"></div>
+                    <div><label for="mesa-corte_dim_min_l">Mín. Larg. (mm):</label><input type="number" id="mesa-corte_dim_min_l" name="mesa-corte_dim_min_l" placeholder="L Mín"></div>
+                    <div><label for="mesa-corte_dim_min_e">Mín. Esp. (mm):</label><input type="number" id="mesa-corte_dim_min_e" name="mesa-corte_dim_min_e" placeholder="E Mín"></div>
+                </div>
+            </div>
+            <!-- FIM DIMENSÕES OBRIGATÓRIAS -->
+
+            <!-- NOVOS ITENS DA LINHA DE CORTE -->
+
+            <!-- BLOCO ETIQUETADORA -->
+            <div class="campo">
+                <label>1 - Etiquetadora?</label>
+                <div><input type="radio" id="mesa_corte_q1_sim" name="mesa_corte_q1_etiquetadora" value="Sim"> <label for="mesa_corte_q1_sim" style="display: inline; margin-left: 5px;">Sim</label></div>
+                <div><input type="radio" id="mesa_corte_q1_nao" name="mesa_corte_q1_etiquetadora" value="Não"> <label for="mesa_corte_q1_nao" style="display: inline; margin-left: 5px;">Não</label></div>
+            </div>
+
+            <div class="campo">
+                <label for="mesa_corte_q2_medidas">2 - Se sim, quais as medidas das etiquetas (mm)?</label>
+                <input type="text" id="mesa_corte_q2_medidas" name="mesa_corte_q2_medidas" placeholder="Ex: 50x30mm">
+            </div>
+
+            <div class="campo">
+                <label for="mesa_corte_q3_gramatura">3 - Qual a gramatura (densidade do papel)?</label>
+                <input type="text" id="mesa_corte_q3_gramatura" name="mesa_corte_q3_gramatura" placeholder="Ex: 80g/m²">
+            </div>
+
+            <div class="campo">
+                <label for="mesa_corte_q4_gravura">4 - Gravura da etiqueta (Upload de Imagem/PDF):</label>
+                <input type="file" id="mesa_corte_q4_gravura" name="mesa_corte_q4_gravura" accept=".png, .jpg, .jpeg, .pdf">
+                <small style="color: #9ACA95;">*Apenas o nome do arquivo será salvo no relatório offline.</small>
+            </div>
+            <!-- FIM BLOCO ETIQUETADORA -->
+
+            <div class="campo">
+                <div class="campo">
+                    <label>5 - Deseja removedor de low-e (Edge deletion) incluso?</label>
+                    <div><input type="radio" id="mesa_corte_q5_sim" name="mesa_corte_q5_removedor" value="Sim"> <label for="mesa_corte_q5_sim" style="display: inline; margin-left: 5px;">Sim</label></div>
+                    <div><input type="radio" id="mesa_corte_q5_nao" name="mesa_corte_q5_removedor" value="Não"> <label for="mesa_corte_q5_nao" style="display: inline; margin-left: 5px;">Não</label></div>
+                </div>
+
+                <div class="campo">
+                    <label for="mesa_corte_q6_otimizador">6 - Qual o otimizador utilizado?</label>
+                    <input type="text" id="mesa_corte_q6_otimizador" name="mesa_corte_q6_otimizador" placeholder="Ex: Optwin, Lisec, etc.">
+                </div>
+
+                <div class="campo">
+                    <label>7 - Método de destaque:</label>
+                    <div><input type="radio" id="mesa_corte_q7_manual" name="mesa_corte_q7_destaque" value="Manual"> <label for="mesa_corte_q7_manual" style="display: inline; margin-left: 5px;">Manual</label></div>
+                    <div><input type="radio" id="mesa_corte_q7_regua" name="mesa_corte_q7_destaque" value="Régua"> <label for="mesa_corte_q7_regua" style="display: inline; margin-left: 5px;">Régua</label></div>
+                </div>
+
+                <div class="campo">
+                    <label for="mesa_corte_q8_tipo_vidro">8 - Tipo do vidro:</label>
+                    <input type="text" id="mesa_corte_q8_tipo_vidro" name="mesa_corte_q8_tipo_vidro" placeholder="Ex: Comum, Low-E, Laminado">
+                </div>
+
+                <div class="campo">
+                    <label for="mesa_corte_q9_armazenamento">9 - Como armazena nos cavaletes (racks)?</label>
+                    <input type="text" id="mesa_corte_q9_armazenamento" name="mesa_corte_q9_armazenamento" placeholder="Descreva o método de armazenamento">
+                </div>
+
+                <div class="campo">
+                    <label for="mesa_corte_q10_quantidade">10 - Qual a quantidade de cavaletes (racks)?</label>
+                    <input type="number" id="mesa_corte_q10_quantidade" name="mesa_corte_q10_quantidade" placeholder="Somente números">
+                </div>
+
+                <!-- BLOCO MESA TOMBADORA/BRAÇO ROBÓTICO -->
+                <div class="campo">
+                    <label>11 - Com mesa tombadoura?</label>
+                    <div><input type="radio" id="mesa_corte_q11_sim" name="mesa_corte_q11_tombadora" value="Sim"> <label for="mesa_corte_q11_sim" style="display: inline; margin-left: 5px;">Sim</label></div>
+                    <div><input type="radio" id="mesa_corte_q11_nao" name="mesa_corte_q11_tombadora" value="Não"> <label for="mesa_corte_q11_nao" style="display: inline; margin-left: 5px;">Não</label></div>
+                </div>
+
+                <div class="campo">
+                    <label>12 - Se sim, braço robótico em:</label>
+                    <div><input type="radio" id="mesa_corte_q12_ambos" name="mesa_corte_q12_braco" value="Ambos os lados"> <label for="mesa_corte_q12_ambos" style="display: inline; margin-left: 5px;">Ambos os lados</label></div>
+                    <div><input type="radio" id="mesa_corte_q12_apenas_um" name="mesa_corte_q12_braco" value="Apenas um lado"> <label for="mesa_corte_q12_apenas_um" style="display: inline; margin-left: 5px;">Apenas um lado</label></div>
+                </div>
+                <!-- FIM BLOCO MESA TOMBADORA/BRAÇO ROBÓTICO -->
+
+                <div class="campo">
+                    <label for="mesa_corte_q13_esteira">13 - Após o destaque, há esteira? Se sim, qual a altura de trabalho?</label>
+                    <input type="text" id="mesa_corte_q13_esteira" name="mesa_corte_q13_esteira" placeholder="Ex: Sim, 900mm">
+                </div>
+
+                <!-- FIM NOVOS ITENS DA LINHA DE CORTE -->
+            </div>
+        </div>
+        <!-- FIM SEÇÃO LINHA DE CORTE -->
+
+        <!-- SEÇÃO LAVADORA -->
+        <div id="lavadora" class="secao" data-maquina="Lavadora">
+                <h2>Lavadora</h2>
+                <p>Máquina para lavagem de vidros.</p>
+
+                <!-- DIMENSÕES OBRIGATÓRIAS -->
+                <div class="campo">
+                    <label>DIMENSÕES (Máximas e Mínimas) - OBRIGATÓRIO:</label>
+                    <div class="campo-dimensao">
+                        <div><label for="lavadora_dim_max_c">Máx. Comp. (mm):</label><input type="number" id="lavadora_dim_max_c" name="lavadora_dim_max_c" placeholder="C Máx"></div>
+                        <div><label for="lavadora_dim_max_l">Máx. Larg. (mm):</label><input type="number" id="lavadora_dim_max_l" name="lavadora_dim_max_l" placeholder="L Máx"></div>
+                        <div><label for="lavadora_dim_max_e">Máx. Esp. (mm):</label><input type="number" id="lavadora_dim_max_e" name="lavadora_dim_max_e" placeholder="E Máx"></div>
+                        <div><label for="lavadora_dim_min_c">Mín. Comp. (mm):</label><input type="number" id="lavadora_dim_min_c" name="lavadora_dim_min_c" placeholder="C Mín"></div>
+                        <div><label for="lavadora_dim_min_l">Mín. Larg. (mm):</label><input type="number" id="lavadora_dim_min_l" name="lavadora_dim_min_l" placeholder="L Mín"></div>
+                        <div><label for="lavadora_dim_min_e">Mín. Esp. (mm):</label><input type="number" id="lavadora_dim_min_e" name="lavadora_dim_min_e" placeholder="E Mín"></div>
+                    </div>
+                </div>
+                <!-- FIM DIMENSÕES OBRIGATÓRIAS -->
+
+                <div class="campo">
+                    <label for="lavadora_q1">1 - Qual o tipo de lavadora?</label>
+                    <select id="lavadora_q1" name="lavadora_q1">
+                        <option value="">Selecione</option>
+                        <option value="Vertical">Vertical</option>
+                        <option value="Horizontal">Horizontal</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label>2 - Criticidade da lavagem:</label>
+                    <div><input type="radio" id="lavadora_q2_alta" name="lavadora_q2_criticidade" value="Alta"> <label for="lavadora_q2_alta" style="display: inline; margin-left: 5px;">Alta</label></div>
+                    <div><input type="radio" id="lavadora_q2_moderada" name="lavadora_q2_criticidade" value="Moderada"> <label for="lavadora_q2_moderada" style="display: inline; margin-left: 5px;">Moderada</label></div>
+                </div>
+
+                <div class="campo">
+                    <label>3 - Adaptada para low-e?</label>
+                    <div><input type="radio" id="lavadora_q3_sim" name="lavadora_q3" value="Sim"> <label for="lavadora_q3_sim" style="display: inline; margin-left: 5px;">Sim</label></div>
+                    <div><input type="radio" id="lavadora_q3_nao" name="lavadora_q3" value="Não"> <label for="lavadora_q3_nao" style="display: inline; margin-left: 5px;">Não</label></div>
+                </div>
+
+                <div class="campo">
+                    <label>4 - Precisa de aquecimento da água?</label>
+                    <div><input type="radio" id="lavadora_q4_sim" name="lavadora_q4" value="Sim"> <label for="lavadora_q4_sim" style="display: inline; margin-left: 5px;">Sim</label></div>
+                    <div><input type="radio" id="lavadora_q4_nao" name="lavadora_q4" value="Não"> <label for="lavadora_q4_nao" style="display: inline; margin-left: 5px;">Não</label></div>
+                </div>
+
+                <div class="campo">
+                    <label>Opcionais:</label>
+                    <div class="opcoes-checkboxes">
+                        <label><input type="checkbox" name="lavadora_opc" value="Sistema de tratamento por osmose reversa"> Sistema de tratamento por osmose reversa</label>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM SEÇÃO LAVADORA -->            <!-- SEÇÃO RETILÍNEA -->
+            <div id="retilinea" class="secao" data-maquina="Lapidadora vertical / Bizeladora">
+                <h2>Lapidadora vertical / Bizeladora</h2>
+                <p>Máquina para lapidação vertical e biselamento.</p>
+                <!-- DIMENSÕES OBRIGATÓRIAS -->
+                <div class="campo">
+                    <label>DIMENSÕES (Máximas e Mínimas) - OBRIGATÓRIO:</label>
+                    <div class="campo-dimensao">
+                        <div><label for="retilinea_dim_max_c">Máx. Comp. (mm):</label><input type="number" id="retilinea_dim_max_c" name="retilinea_dim_max_c" placeholder="C Máx"></div>
+                        <div><label for="retilinea_dim_max_l">Máx. Larg. (mm):</label><input type="number" id="retilinea_dim_max_l" name="retilinea_dim_max_l" placeholder="L Máx"></div>
+                        <div><label for="retilinea_dim_max_e">Máx. Esp. (mm):</label><input type="number" id="retilinea_dim_max_e" name="retilinea_dim_max_e" placeholder="E Máx"></div>
+                        <div><label for="retilinea_dim_min_c">Mín. Comp. (mm):</label><input type="number" id="retilinea_dim_min_c" name="retilinea_dim_min_c" placeholder="C Mín"></div>
+                        <div><label for="retilinea_dim_min_l">Mín. Larg. (mm):</label><input type="number" id="retilinea_dim_min_l" name="retilinea_dim_min_l" placeholder="L Mín"></div>
+                        <div><label for="retilinea_dim_min_e">Mín. Esp. (mm):</label><input type="number" id="retilinea_dim_min_e" name="retilinea_dim_min_e" placeholder="E Mín"></div>
+                    </div>
+                </div>
+                <!-- FIM DIMENSÕES OBRIGATÓRIAS -->
+
+                <div class="campo">
+                    <label for="retilinea_q1">1 - Qual o modelo?</label>
+                    <select id="retilinea_q1" name="retilinea_q1">
+                        <option value="">Selecione</option>
+                        <option value="Corrente/Correia">Corrente/Correia</option>
+                        <option value="Rolamento">Rolamento</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="retilinea_q2">2 - Quantidade de rebolos?</label>
+                    <input type="number" id="retilinea_q2" name="retilinea_q2" placeholder="Ex: 9, 11, 14">
+                </div>
+
+                <div class="campo">
+                    <label for="retilinea_q3">3 - Precisará de virador (turnover)?</label>
+                    <input type="text" id="retilinea_q3" name="retilinea_q3" placeholder="Sim/Não">
+                </div>
+
+                <div class="campo">
+                    <label for="retilinea_q4">4 - Precisa de carregador e descarregador?</label>
+                    <input type="text" id="retilinea_q4" name="retilinea_q4" placeholder="Sim/Não">
+                </div>
+            </div>
+            <!-- FIM SEÇÃO RETILÍNEA -->
+
+            <!-- SEÇÃO LINHA DE INSULADO -->
+            <div id="insulado" class="secao" data-maquina="Linha de Insulado">
+                <h2>Linha de Insulado</h2>
+                <p>Linha para produção automática de vidros insulados.</p>
+
+                <!-- DIMENSÕES OBRIGATÓRIAS -->
+                <div class="campo">
+                    <label>DIMENSÕES (Máximas e Mínimas) - OBRIGATÓRIO:</label>
+                    <div class="campo-dimensao">
+                        <div><label for="insulado_dim_max_c">Máx. Comp. (mm):</label><input type="number" id="insulado_dim_max_c" name="insulado_dim_max_c" placeholder="C Máx"></div>
+                        <div><label for="insulado_dim_max_l">Máx. Larg. (mm):</label><input type="number" id="insulado_dim_max_l" name="insulado_dim_max_l" placeholder="L Máx"></div>
+                        <div><label for="insulado_dim_min_c">Mín. Comp. (mm):</label><input type="number" id="insulado_dim_min_c" name="insulado_dim_min_c" placeholder="C Mín"></div>
+                        <div><label for="insulado_dim_min_l">Mín. Larg. (mm):</label><input type="number" id="insulado_dim_min_l" name="insulado_dim_min_l" placeholder="L Mín"></div>
+                        <div><label for="insulado_dim_max_e">Esp. max do pacote (mm):</label><input type="number" id="insulado_dim_max_e" name="insulado_dim_max_e" placeholder="E Máx do pacote"></div>
+                        <div><label for="insulado_dim_min_e">Esp. min do pacote (mm):</label><input type="number" id="insulado_dim_min_e" name="insulado_dim_min_e" placeholder="E Mín do pacote"></div>
+                    </div>
+                </div>
+                <!-- FIM DIMENSÕES OBRIGATÓRIAS -->
+
+                <div class="campo">
+                    <label>1 - Automática, semiautomática ou manual?</label>
+                    <div><input type="radio" id="insulado_q1_auto" name="insulado_q1_tipo" value="Automática"> <label for="insulado_q1_auto" style="display: inline; margin-left: 5px;">Automática</label></div>
+                    <div><input type="radio" id="insulado_q1_semi" name="insulado_q1_tipo" value="Semiautomática"> <label for="insulado_q1_semi" style="display: inline; margin-left: 5px;">Semiautomática</label></div>
+                    <div><input type="radio" id="insulado_q1_manual" name="insulado_q1_tipo" value="Manual"> <label for="insulado_q1_manual" style="display: inline; margin-left: 5px;">Manual</label></div>
+                </div>
+
+                <div class="campo">
+                    <label for="insulado_q2">2 - Qual o tipo de espaçador?</label>
+                    <select id="insulado_q2" name="insulado_q2">
+                        <option value="">Selecione</option>
+                        <option value="Alumínio">Alumínio</option>
+                        <option value="Super Spacer">Super Spacer</option>
+                        <option value="PVC">PVC</option>
+                        <option value="TPS">TPS</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="insulado_q3_overlap">3 - Overlap / Offset em quantos lados?</label>
+                    <input type="number" id="insulado_q3_overlap" name="insulado_q3_overlap" placeholder="Número de lados (somente números)">
+                </div>
+
+                <div class="campo">
+                    <label>4 - Carregador automático?</label>
+                    <div><input type="radio" id="insulado_q4_carregador_sim" name="insulado_q4_carregador" value="Sim"> <label for="insulado_q4_carregador_sim" style="display: inline; margin-left: 5px;">Sim</label></div>
+                    <div><input type="radio" id="insulado_q4_carregador_nao" name="insulado_q4_carregador" value="Não"> <label for="insulado_q4_carregador_nao" style="display: inline; margin-left: 5px;">Não</label></div>
+                </div>
+
+                <div class="campo">
+                    <label>5 - Aplicador de cortiça automático?</label>
+                    <div><input type="radio" id="insulado_q5_cortica_sim" name="insulado_q5_cortica" value="Sim"> <label for="insulado_q5_cortica_sim" style="display: inline; margin-left: 5px;">Sim</label></div>
+                    <div><input type="radio" id="insulado_q5_cortica_nao" name="insulado_q5_cortica" value="Não"> <label for="insulado_q5_cortica_nao" style="display: inline; margin-left: 5px;">Não</label></div>
+                </div>
+
+                <div class="campo">
+                    <label>6 - Removedor de Low-E (Edge deletion)?</label>
+                    <div><input type="radio" id="insulado_q6_lowe_sim" name="insulado_q6_lowe" value="Sim"> <label for="insulado_q6_lowe_sim" style="display: inline; margin-left: 5px;">Sim</label></div>
+                    <div><input type="radio" id="insulado_q6_lowe_nao" name="insulado_q6_lowe" value="Não"> <label for="insulado_q6_lowe_nao" style="display: inline; margin-left: 5px;">Não</label></div>
+                </div>
+
+                <div class="campo">
+                    <label>7 - Gás argônio?</label>
+                    <div><input type="radio" id="insulado_q7_argonio_sim" name="insulado_q7_argonio" value="Sim"> <label for="insulado_q7_argonio_sim" style="display: inline; margin-left: 5px;">Sim</label></div>
+                    <div><input type="radio" id="insulado_q7_argonio_nao" name="insulado_q7_argonio" value="Não"> <label for="insulado_q7_argonio_nao" style="display: inline; margin-left: 5px;">Não</label></div>
+                </div>
+
+                <div class="campo">
+                    <label>8 - Se espaçador de alumínio:</label>
+                    <div class="opcoes-checkboxes">
+                        <label><input type="checkbox" name="insulado_q8_aluminio" value="Dobradeira automática"> Dobradeira automática</label>
+                        <label><input type="checkbox" name="insulado_q8_aluminio" value="Extrusora de sílica"> Extrusora de sílica</label>
+                        <label><input type="checkbox" name="insulado_q8_aluminio" value="Butiladora"> Butiladora</label>
+                        <label><input type="checkbox" name="insulado_q8_aluminio" value="Movimentador de quadros"> Movimentador de quadros</label>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM SEÇÃO LINHA DE INSULADO -->
+
+            <!-- SEÇÃO LINHA DE LAMINADO -->
+            <div id="laminado" class="secao" data-maquina="Linha de Laminado">
+                <h2>Linha de Laminado</h2>
+                <p>Linha para produção de vidros laminados.</p>
+
+                <!-- DIMENSÕES OBRIGATÓRIAS -->
+                <div class="campo">
+                    <label>DIMENSÕES (Máximas e Mínimas) - OBRIGATÓRIO:</label>
+                    <div class="campo-dimensao">
+                        <div><label for="laminado_dim_max_c">Máx. Comp. (mm):</label><input type="number" id="laminado_dim_max_c" name="laminado_dim_max_c" placeholder="C Máx"></div>
+                        <div><label for="laminado_dim_max_l">Máx. Larg. (mm):</label><input type="number" id="laminado_dim_max_l" name="laminado_dim_max_l" placeholder="L Máx"></div>
+                        <div><label for="laminado_dim_max_e">Máx. Esp. (mm):</label><input type="number" id="laminado_dim_max_e" name="laminado_dim_max_e" placeholder="E Máx"></div>
+                        <div><label for="laminado_dim_min_c">Mín. Comp. (mm):</label><input type="number" id="laminado_dim_min_c" name="laminado_dim_min_c" placeholder="C Mín"></div>
+                        <div><label for="laminado_dim_min_l">Mín. Larg. (mm):</label><input type="number" id="laminado_dim_min_l" name="laminado_dim_min_l" placeholder="L Mín"></div>
+                        <div><label for="laminado_dim_min_e">Mín. Esp. (mm):</label><input type="number" id="laminado_dim_min_e" name="laminado_dim_min_e" placeholder="E Mín"></div>
+                    </div>
+                </div>
+                <!-- FIM DIMENSÕES OBRIGATÓRIAS -->
+
+                <div class="campo">
+                    <label for="laminado_q1">1 - Qual o tamanho da linha?</label>
+                    <select id="laminado_q1" name="laminado_q1">
+                        <option value="">Selecione</option>
+                        <option value="Padrão">Padrão</option>
+                        <option value="Jumbo">Jumbo</option>
+                    </select>
+                </div>
+
+                <div class="campo">
+                    <label for="laminado_q2_espessura_final">2 - Espessura final (mm):</label>
+                    <input type="number" id="laminado_q2_espessura_final" name="laminado_q2_espessura_final" placeholder="Espessura final em mm (somente números)">
+                </div>
+
+                <div class="campo">
+                    <label>3 - PVB ou EVA?</label>
+                    <div><input type="radio" id="laminado_q3_pvb" name="laminado_q3_tipo" value="PVB"> <label for="laminado_q3_pvb" style="display: inline; margin-left: 5px;">PVB</label></div>
+                    <div><input type="radio" id="laminado_q3_eva" name="laminado_q3_tipo" value="EVA"> <label for="laminado_q3_eva" style="display: inline; margin-left: 5px;">EVA</label></div>
+                </div>
+
+                <div class="campo">
+                    <label>4 - Se PVB:</label>
+                    <div class="opcoes-checkboxes">
+                        <label><input type="checkbox" name="laminado_q4_pvb_tipo" value="Forno prensa"> Forno prensa</label>
+                        <label><input type="checkbox" name="laminado_q4_pvb_tipo" value="Autoclave"> Autoclave</label>
+                    </div>
+                </div>
+
+                <div class="campo">
+                    <label for="laminado_q5_conectores">5 - Se PVB, qual a quantidade de conectores de vácuo para vidros curvos:</label>
+                    <input type="number" id="laminado_q5_conectores" name="laminado_q5_conectores" placeholder="Quantidade de conectores (somente números)">
+                </div>
+
+                <div class="campo">
+                    <label for="laminado_q6_eva_gavetas">6 - Se EVA, quantas gavetas?</label>
+                    <input type="number" id="laminado_q6_eva_gavetas" name="laminado_q6_eva_gavetas" placeholder="Quantidade de gavetas (somente números)">
+                </div>
+
+                <div class="campo">
+                    <label>Se PVB, opcionais:</label>
+                    <div class="opcoes-checkboxes">
+                        <label><input type="checkbox" name="laminado_opc" value="Compressor"> Compressor</label>
+                        <label><input type="checkbox" name="laminado_opc" value="Tanque de ar"> Tanque de ar</label>
+                        <label><input type="checkbox" name="laminado_opc" value="Torre de resfriamento"> Torre de resfriamento</label>
+                        <label><input type="checkbox" name="laminado_opc" value="Silenciador"> Silenciador</label>
+                        <label><input type="checkbox" name="laminado_opc" value="Carrinho de transporte"> Carrinho de transporte</label>
+                        <label><input type="checkbox" name="laminado_opc" value="Bomba de vácuo"> Bomba de vácuo</label>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM SEÇÃO LINHA DE LAMINADO -->
+
+            <!-- SEÇÃO FORNO DE TÊMPERA -->
+            <div id="tempera" class="secao" data-maquina="Forno de Têmpera">
+                <h2>Forno de Têmpera</h2>
+                <p>Forno para têmpera de vidro.</p>
+
+                <!-- DIMENSÕES OBRIGATÓRIAS -->
+                <div class="campo">
+                    <label>DIMENSÕES (Máximas e Mínimas) - OBRIGATÓRIO:</label>
+                    <div class="campo-dimensao">
+                        <div><label for="tempera_dim_max_c">Máx. Comp. (mm):</label><input type="number" id="tempera_dim_max_c" name="tempera_dim_max_c" placeholder="C Máx"></div>
+                        <div><label for="tempera_dim_max_l">Máx. Larg. (mm):</label><input type="number" id="tempera_dim_max_l" name="tempera_dim_max_l" placeholder="L Máx"></div>
+                        <div><label for="tempera_dim_max_e">Máx. Esp. (mm):</label><input type="number" id="tempera_dim_max_e" name="tempera_dim_max_e" placeholder="E Máx"></div>
+                        <div><label for="tempera_dim_min_c">Mín. Comp. (mm):</label><input type="number" id="tempera_dim_min_c" name="tempera_dim_min_c" placeholder="C Mín"></div>
+                        <div><label for="tempera_dim_min_l">Mín. Larg. (mm):</label><input type="number" id="tempera_dim_min_l" name="tempera_dim_min_l" placeholder="L Mín"></div>
+                        <div><label for="tempera_dim_min_e">Mín. Esp. (mm):</label><input type="number" id="tempera_dim_min_e" name="tempera_dim_min_e" placeholder="E Mín"></div>
+                    </div>
+                </div>
+                <!-- FIM DIMENSÕES OBRIGATÓRIAS -->
+
+                <h3>TÊMPERA PLANA</h3>
+
+                <div class="campo">
+                    <label for="tempera_plana_q1">1 - Área Máxima de Carregamento (em mm):</label>
+                    <input type="text" id="tempera_plana_q1" name="tempera_plana_q1" placeholder="Ex: 3300x2500mm">
+                </div>
+
+                <div class="campo">
+                    <label for="tempera_plana_q2">2 - Vidro Low-e (nível de emissividade):</label>
+                    <input type="text" id="tempera_plana_q2" name="tempera_plana_q2" placeholder="Ex: 0.01, 0.02, etc.">
+                </div>
+
+                <div class="campo">
+                    <label for="tempera_plana_q3">3 - Quantidade de câmaras (com/sem pré aquecimento):</label>
+                    <input type="text" id="tempera_plana_q3" name="tempera_plana_q3" placeholder="Ex: 1 Câmara (sem pré aquecimento)">
+                </div>
+
+                <h3>TÊMPERA SIMPLES CURVATURA</h3>
+
+                <div class="campo">
+                    <label for="tempera_curva_q1">1 - Tamanho Máximo para Curvar (em mm):</label>
+                    <input type="text" id="tempera_curva_q1" name="tempera_curva_q1" placeholder="Ex: 2500x1500mm">
+                </div>
+
+                <div class="campo">
+                    <label for="tempera_curva_q2">2 - Curvatura de raio x espessura:</label>
+                    <input type="text" id="tempera_curva_q2" name="tempera_curva_q2" placeholder="Ex: Raio 500mm x Espessura 6mm">
+                </div>
+            </div>
+            <!-- FIM SEÇÃO FORNO DE TÊMPERA -->
+
+            <!-- SEÇÃO LASER SUPER FAST -->
+            <div id="laser-sf" class="secao" data-maquina="Laser Super Fast">
+                <h2>Laser Super Fast</h2>
+                <p>Máquina de corte a laser de alta velocidade.</p>
+
+                <!-- DIMENSÕES OBRIGATÓRIAS -->
+                <div class="campo">
+                    <label>DIMENSÕES (Máximas e Mínimas) - OBRIGATÓRIO:</label>
+                    <div class="campo-dimensao">
+                        <div><label for="laser-sf_dim_max_c">Máx. Comp. (mm):</label><input type="number" id="laser-sf_dim_max_c" name="laser-sf_dim_max_c" placeholder="C Máx"></div>
+                        <div><label for="laser-sf_dim_max_l">Máx. Larg. (mm):</label><input type="number" id="laser-sf_dim_max_l" name="laser-sf_dim_max_l" placeholder="L Máx"></div>
+                        <div><label for="laser-sf_dim_max_e">Máx. Esp. (mm):</label><input type="number" id="laser-sf_dim_max_e" name="laser-sf_dim_max_e" placeholder="E Máx"></div>
+                        <div><label for="laser-sf_dim_min_c">Mín. Comp. (mm):</label><input type="number" id="laser-sf_dim_min_c" name="laser-sf_dim_min_c" placeholder="C Mín"></div>
+                        <div><label for="laser-sf_dim_min_l">Mín. Larg. (mm):</label><input type="number" id="laser-sf_dim_min_l" name="laser-sf_dim_min_l" placeholder="L Mín"></div>
+                        <div><label for="laser-sf_dim_min_e">Mín. Esp. (mm):</label><input type="number" id="laser-sf_dim_min_e" name="laser-sf_dim_min_e" placeholder="E Mín"></div>
+                    </div>
+                </div>
+                <!-- FIM DIMENSÕES OBRIGATÓRIAS -->
+
+                <div class="campo">
+                    <label for="laser_sf_q1_recorte">1 - Descreva o tipo de recorte:</label>
+                    <input type="text" id="laser_sf_q1_recorte" name="laser_sf_q1_recorte" placeholder="Descreva o tipo de recorte">
+                </div>
+
+                <div class="campo">
+                    <label for="laser_sf_q2_tipo_vidro">2 - Tipo do vidro (Incolor, verde, etc...):</label>
+                    <input type="text" id="laser_sf_q2_tipo_vidro" name="laser_sf_q2_tipo_vidro" placeholder="Ex: Incolor, Verde, Bronze">
+                </div>
+            </div>
+            <!-- FIM SEÇÃO LASER SUPER FAST -->
+
+            <!-- SEÇÃO SERIGRAFIA -->
+            <div id="serigrafia" class="secao" data-maquina="Serigrafia">
+                <h2>Serigrafia</h2>
+                <p>Máquina para impressão serigráfica em vidros.</p>
+
+                <!-- DIMENSÕES OBRIGATÓRIAS -->
+                <div class="campo">
+                    <label>DIMENSÕES (Máximas e Mínimas) - OBRIGATÓRIO:</label>
+                    <div class="campo-dimensao">
+                        <div><label for="serigrafia_dim_max_c">Máx. Comp. (mm):</label><input type="number" id="serigrafia_dim_max_c" name="serigrafia_dim_max_c" placeholder="C Máx"></div>
+                        <div><label for="serigrafia_dim_max_l">Máx. Larg. (mm):</label><input type="number" id="serigrafia_dim_max_l" name="serigrafia_dim_max_l" placeholder="L Máx"></div>
+                        <div><label for="serigrafia_dim_max_e">Máx. Esp. (mm):</label><input type="number" id="serigrafia_dim_max_e" name="serigrafia_dim_max_e" placeholder="E Máx"></div>
+                        <div><label for="serigrafia_dim_min_c">Mín. Comp. (mm):</label><input type="number" id="serigrafia_dim_min_c" name="serigrafia_dim_min_c" placeholder="C Mín"></div>
+                        <div><label for="serigrafia_dim_min_l">Mín. Larg. (mm):</label><input type="number" id="serigrafia_dim_min_l" name="serigrafia_dim_min_l" placeholder="L Mín"></div>
+                        <div><label for="serigrafia_dim_min_e">Mín. Esp. (mm):</label><input type="number" id="serigrafia_dim_min_e" name="serigrafia_dim_min_e" placeholder="E Mín"></div>
+                    </div>
+                </div>
+                <!-- FIM DIMENSÕES OBRIGATÓRIAS -->
+
+                <div class="campo">
+                    <label for="serigrafia_q1_cores">1 - Quantidade de cores:</label>
+                    <input type="number" id="serigrafia_q1_cores" name="serigrafia_q1_cores" placeholder="Número de cores (somente números)">
+                </div>
+
+                <div class="campo">
+                    <label>2 - Precisa de forno de secagem integrado?</label>
+                    <div><input type="radio" id="serigrafia_q2_forno_sim" name="serigrafia_q2_forno" value="Sim"> <label for="serigrafia_q2_forno_sim" style="display: inline; margin-left: 5px;">Sim</label></div>
+                    <div><input type="radio" id="serigrafia_q2_forno_nao" name="serigrafia_q2_forno" value="Não"> <label for="serigrafia_q2_forno_nao" style="display: inline; margin-left: 5px;">Não</label></div>
+                </div>
+
+                <div class="campo">
+                    <label>3 - Gaveteiro (acumulador)?</label>
+                    <div><input type="radio" id="serigrafia_q3_gaveteiro_sim" name="serigrafia_q3_gaveteiro" value="Sim"> <label for="serigrafia_q3_gaveteiro_sim" style="display: inline; margin-left: 5px;">Sim</label></div>
+                    <div><input type="radio" id="serigrafia_q3_gaveteiro_nao" name="serigrafia_q3_gaveteiro" value="Não"> <label for="serigrafia_q3_gaveteiro_nao" style="display: inline; margin-left: 5px;">Não</label></div>
+                </div>
+            </div>
+            <!-- FIM SEÇÃO SERIGRAFIA -->
+
+            <!-- SEÇÃO AUTOMAÇÃO -->
+            <div id="automacao" class="secao" data-maquina="Automação">
+                <h2>Automação</h2>
+                <p>Integração e automação de máquinas.</p>
+
+                <div class="campo">
+                    <label for="automacao_dwg">1 - Upload de layout da fábrica (.dwg):</label>
+                    <input type="file" id="automacao_dwg" name="automacao_dwg" accept=".dwg">
+                    <p style="font-size: 0.9em; color: #9ACA95; margin-top: 5px;">O arquivo .dwg será enviado para um serviço de armazenamento e o link será incluído no relatório.</p>
+                </div>
+
+                <div class="campo">
+                    <label>2 - Selecione as máquinas para automação:</label>
+                    <div class="opcoes-checkboxes">
+                        <label><input type="checkbox" name="automacao_maquinas" value="Linha de Corte"> Linha de Corte (Mesa de Corte)</label>
+                        <label><input type="checkbox" name="automacao_maquinas" value="Laser Super Fast"> Laser Super Fast</label>
+                        <label><input type="checkbox" name="automacao_maquinas" value="Laser Desbaste LOW-E"> Laser Desbaste LOW-E</label>
+                        <label><input type="checkbox" name="automacao_maquinas" value="Lavadora"> Lavadora (Horizontal e Vertical)</label>
+                        <label><input type="checkbox" name="automacao_maquinas" value="Bilateral"> Bilateral</label>
+                        <label><input type="checkbox" name="automacao_maquinas" value="Lapidadora vertical / Bizeladora"> Lapidadora vertical / Bizeladora</label>
+                        <label><input type="checkbox" name="automacao_maquinas" value="CNC Horizontal"> CNC Horizontal</label>
+                        <label><input type="checkbox" name="automacao_maquinas" value="CNC Vertical"> CNC Vertical</label>
+                        <label><input type="checkbox" name="automacao_maquinas" value="CNC de Lapidação Rápida (Fast CNC)"> CNC de Lapidação Rápida (Fast CNC)</label>
+                        <label><input type="checkbox" name="automacao_maquinas" value="Laser Galvo Furação"> Laser Galvo Furação</label>
+                        <label><input type="checkbox" name="automacao_maquinas" value="Serigrafia"> Serigrafia</label>
+                        <label><input type="checkbox" name="automacao_maquinas" value="Forno de Têmpera"> Forno de Têmpera</label>
+                        <label><input type="checkbox" name="automacao_maquinas" value="Linha de Laminado"> Linha de Laminado</label>
+                        <label><input type="checkbox" name="automacao_maquinas" value="Linha de Insulado"> Linha de Insulado</label>
+                    </div>
+                </div>
+            </div>
+            <!-- FIM SEÇÃO AUTOMAÇÃO -->
+
+            <div class="botoes">
+                <button type="button" id="download-btn">Salvar Respostas e Baixar Arquivo</button>
+                <button type="button" id="email-btn">Enviar por E-mail</button>
+            </div>
+    </form>
+</div>
+
+<script>
+    // Mapeamento de nomes de campos para títulos de perguntas
+    const FIELD_TITLES = {
+        // Cabeçalho
+        'cliente_nome': 'Nome do Cliente',
+        'cliente_empresa': 'Empresa',
+        'cliente_email': 'Email',
+
+        // Bilateral
+        'bilateral_q1': '1 - Tipo de bilateral (PERIFÉRICA ou COPO)',
+        'bilateral_q2_formato': '2 - Formato da linha',
+        'bilateral_q3_tipo_vidro': '3 - Tipo do vidro',
+        'bilateral_q4_tipo_canto': '4 - Tipo de canto',
+        'bilateral_q4_polimento_sim_nao': '5.1 - Com ou sem polimento?',
+        'bilateral_q5_nivel_acabamento': '5.2 - Nível de acabamento do polimento',
+        'bilateral_q6': '6 - Aresta de corte para lapidação (sobrematerial) - Largura em mm',
+        'bilateral_opc': 'OPCIONAIS', // Para os opcionais gerais
+        'bilateral_opc_quebra': 'OPCIONAL - Quebra canto',
+        'bilateral_opc_raio': 'OPCIONAL - Raio em canto',
+
+        // Laser Desbaste LOW-E
+        'laser_low_e_q1_tipo_vidro': '1 - Qual é o tipo do vidro?',
+        'laser_low_e_q2_aplicabilidade': '2 - Aplicabilidade',
+        'laser_low_e_q3_diametro_furos': '3 - Diâmetro dos furos (se aplicável)',
+        'laser_low_e_desenhos_especiais': 'Desenhos especiais (Arquivo)',
+
+        // Laser Galvo Furação
+        'laser_galvo_q1_tipo_vidro': '1 - Qual é o tipo de vidro?',
+        'laser_galvo_q2_dim_furos': '2 - Dimensões dos furos (máximo e mínimo) (mm)',
+        'laser_galvo_q3_geometria': '3 - Geometria (Círculo, quadrado, especial)',
+        'laser_galvo_q4': '4 - Sistema da máquina (Online ou Offline)',
+        'laser_galvo_q5': '5 - Qual a espessura mínima e máxima do vidro (em mm)?',
+        'laser_galvo_q6': '6 - Qual a velocidade de furação (em segundos por furo)?',
+        'laser_galvo_q7': '7 - Robô para carregar e descarregar (Offline)',
+        'laser_galvo_desenhos_especiais': 'Desenhos especiais (Arquivo)',
+
+        // Fast CNC
+        'fast_cnc_q1_carga': '1 - Precisa de carga e descarga automática?',
+        'fast_cnc_q2_corte': '2 - Precisa de corte interno?',
+        'fast_cnc_q3_furacao': '3 - Precisa de furação?',
+        'fast_cnc_q4_desenhos': '4 - Desenhos especiais (Arquivo)',
+        'fast_cnc_opc': 'OPCIONAIS',
+
+        // CNC Horizontal
+        'cnc_h_q1': '1 - Sistema da máquina (Online ou Offline)',
+        'cnc_h_q2_ferramentas': '2 - Quantidade de ferramentas',
+        'cnc_h_q3': '3 - Robô para carregar e descarregar (Offline)',
+        'cnc_h_opc': 'OPCIONAIS',
+
+        // CNC Vertical
+        'cnc_v_q1': '1 - Tipo de vidro',
+        'cnc_v_q2_ferramentas': '2 - Quantidade de ferramentas',
+        'cnc_v_q3': '3 - Robô para carregar e descarregar (Offline)',
+        'cnc_v_opc': 'OPCIONAIS',
+
+        // Linha de Corte
+        'mesa_corte_q1_etiquetadora': '1 - Etiquetadora?',
+        'mesa_corte_q2_medidas': '2 - Medidas das etiquetas (mm)',
+        'mesa_corte_q3_gramatura': '3 - Gramatura (densidade do papel)',
+        'mesa_corte_q4_gravura': '4 - Gravura da etiqueta (Arquivo)',
+        'mesa_corte_q5_removedor': '5 - Deseja removedor de low-e (Edge deletion) incluso?',
+        'mesa_corte_q6_otimizador': '6 - Qual o otimizador utilizado?',
+        'mesa_corte_q7_destaque': '7 - Método de destaque',
+        'mesa_corte_q8_tipo_vidro': '8 - Tipo do vidro',
+        'mesa_corte_q9_armazenamento': '9 - Como armazena nos cavaletes (racks)?',
+        'mesa_corte_q10_quantidade': '10 - Qual a quantidade de cavaletes (racks)?',
+        'mesa_corte_q11_tombadora': '11 - Com mesa tombadoura?',
+        'mesa_corte_q12_braco': '12 - Se sim, braço robótico em',
+        'mesa_corte_q13_esteira': '13 - Após o destaque, há esteira? Se sim, qual a altura de trabalho?',
+
+        // Lavadora
+        'lavadora_q1': '1 - Tipo (Vertical ou Horizontal)',
+        'lavadora_q2': '2 - Tipo de lavadora Horizontal (Rolo de esponja ou HQX)',
+        'lavadora_q2_criticidade': '2 - Criticidade da lavagem',
+        'lavadora_q3': '3 - Lavado vidros com low-e',
+        'lavadora_q4': '4 - Precisa de aquecimento da água',
+        'lavadora_opc': 'OPCIONAIS',
+
+        // Retilínea
+        'retilinea_q1': '1 - Modelo (Corrente/Correia ou Rolamento)',
+        'retilinea_q2': '2 - Quantidade de rebolos',
+        'retilinea_q3': '3 - Precisará de virador (turnover)',
+        'retilinea_q4': '4 - Precisa de carregador e descarregador',
+
+        // Linha de Insulado
+        'insulado_q1_tipo': '1 - Tipo de linha (Automática, Semiautomática, Manual)',
+        'insulado_q2': '2 - Tipo de espaçador',
+        'insulado_q3_overlap': '3 - Overlap (número de lados)',
+        'insulado_q4_carregador': '4 - Carregador e descarregador automático',
+        'insulado_q5_cortica': '5 - Precisa de cortiça?',
+        'insulado_q6_lowe': '6 - Vidro Low-E?',
+        'insulado_q7_argonio': '7 - Precisa de argônio?',
+        'insulado_q8_aluminio': '8 - Se espaçador de alumínio, selecione os opcionais',
+        'insulado_opc': 'OPCIONAIS',
+
+        // Linha de Laminado
+        'laminado_q1': '1 - Tamanho da linha (Padrão ou Jumbo)',
+        'laminado_q2_espessura_final': '2 - Espessura final do laminado',
+        'laminado_q3_tipo': '3 - Tipo de material (PVB ou EVA)',
+        'laminado_q4_pvb_tipo': '4 - Se PVB, tipo de processo',
+        'laminado_q5_conectores': '5 - Quantidade de conectores (se forno prensa)',
+        'laminado_q6_eva_gavetas': '6 - Quantidade de gavetas (se EVA)',
+
+        // Forno de Têmpera
+        'tempera_plana_q1': 'TÊMPERA PLANA - 1 - Área Máxima de Carregamento (em mm)',
+        'tempera_plana_q2': 'TÊMPERA PLANA - 2 - Espessura mínima e máxima',
+        'tempera_plana_q3': 'TÊMPERA PLANA - 3 - Vidro Low-e (nível de emissividade)',
+        'tempera_plana_q4': 'TÊMPERA PLANA - 4 - Quantidade de câmaras (com/sem pré aquecimento)',
+        'tempera_curva_q1': 'TÊMPERA SIMPLES CURVATURA - 1 - Tamanho Máximo para Curvar (em mm)',
+        'tempera_curva_q2': 'TÊMPERA SIMPLES CURVATURA - 2 - Espessura',
+        'tempera_curva_q3': 'TÊMPERA SIMPLES CURVATURA - 3 - Intervalo de raio (5~6mm)',
+        'tempera_curva_q4': 'TÊMPERA SIMPLES CURVATURA - 4 - Intervalo de raio (8~12mm)',
+        'tempera_dupla_q1': 'TÊMPERA DUPLA CURVATURA - 1 - Necessidade de desenho para orçamento de molde',
+        'tempera_opc': 'OPCIONAIS',
+
+        // Laser Super Fast
+        'laser_sf_q1_recorte': '1 - Tipo de recorte',
+        'laser_sf_q2_tipo_vidro': '2 - Tipo do vidro',
+        'laser_sf_q3': '3 - Qual a espessura mínima e máxima do vidro (em mm)?',
+        'laser_sf_q4': '4 - Qual o tipo de laser?',
+        'laser_sf_q5': '5 - Qual a velocidade de corte (em metros por minuto)?',
+
+        // Serigrafia
+        'serigrafia_q1_cores': '1 - Quantidade de cores',
+        'serigrafia_q2_forno': '2 - Precisa de forno de secagem integrado?',
+        'serigrafia_q3_gaveteiro': '3 - Gaveteiro (acumulador)?',
+
+        // Automação
+        'automacao_dwg': '1 - Upload de layout da fábrica (.dwg)',
+        'automacao_maquinas': '2 - Máquinas selecionadas para automação',
+    };
+
+    // Função para salvar os dados no LocalStorage
+    function saveForm() {
+        const formData = new FormData(document.getElementById('questionario-form'));
+        const data = {};
+
+        // Coleta todos os valores do formulário (exceto arquivos)
+        for (let [key, value] of formData.entries()) {
+            // NÃO salvar arquivos no localStorage (apenas texto)
+            if (value instanceof File) {
+                continue; // Pula arquivos
+            }
+            
+            if (data[key]) {
+                if (Array.isArray(data[key])) {
+                    data[key].push(value);
+                } else {
+                    data[key] = [data[key], value];
+                }
+            } else {
+                data[key] = value;
+            }
+        }
+
+        localStorage.setItem('nexFormData', JSON.stringify(data));
+    }
+
+    // Função para carregar os dados do LocalStorage
+    function loadForm() {
+        const savedData = localStorage.getItem('nexFormData');
+        if (savedData) {
+            const data = JSON.parse(savedData);
+            const form = document.getElementById('questionario-form');
+
+            for (const key in data) {
+                const value = data[key];
+                const elements = form.querySelectorAll(`[name="${key}"]`);
+
+                elements.forEach(element => {
+                    // IGNORAR campos de arquivo (file) - navegadores não permitem definir valores por segurança
+                    if (element.type === 'file') {
+                        return; // Pula campos de arquivo
+                    }
+                    
+                    if (element.type === 'checkbox' || element.type === 'radio') {
+                        if (Array.isArray(value)) {
+                            element.checked = value.includes(element.value);
+                        } else {
+                            element.checked = element.value === value;
+                        }
+                    } else if (element.tagName === 'SELECT') {
+                        element.value = value;
+                    } else {
+                        element.value = value;
+                    }
+                });
+            }
+        }
+    }
+
+    // Função para gerar o arquivo de texto (CORRIGIDA)
+    function generateTextFile(data) {
+        let content = '--- QUESTIONÁRIO NEX - RESPOSTAS ---\n\n';
+        const form = document.getElementById('questionario-form');
+        const sections = form.querySelectorAll('.secao');
+        let hasContent = false;
+
+        // 1. Processa o Cabeçalho (Dados do Cliente)
+        content += '========================================\n';
+        content += '== DADOS DO CLIENTE ==\n';
+        content += '========================================\n';
+        content += `Nome do Cliente: ${data['cliente_nome'] || 'Não Informado'}\n`;
+        content += `Empresa: ${data['cliente_empresa'] || 'Não Informado'}\n`;
+        content += `Email: ${data['cliente_email'] || 'Não Informado'}\n\n`;
+
+        // 2. Processa as Seções de Máquinas
+        sections.forEach(section => {
+            if (section.id === 'dados-cliente') return; // Ignora a seção de dados do cliente no loop de máquinas
+
+            const maquina = section.getAttribute('data-maquina');
+            let sectionContent = '';
+            let sectionFilled = false;
+            const processedFields = new Set();
+
+            // Adiciona as dimensões padrão se existirem
+            const dim_max_c = data[`${section.id}_dim_max_c`];
+            const dim_max_l = data[`${section.id}_dim_max_l`];
+            const dim_max_e = data[`${section.id}_dim_max_e`];
+            const dim_min_c = data[`${section.id}_dim_min_c`];
+            const dim_min_l = data[`${section.id}_dim_min_l`];
+            const dim_min_e = data[`${section.id}_dim_min_e`];
+
+            // Prepara as dimensões padrão (mas NÃO marca sectionFilled ainda)
+            let dimensoesContent = '';
+            if (dim_max_c || dim_max_l || dim_max_e || dim_min_c || dim_min_l || dim_min_e) {
+                dimensoesContent += `DIMENSÕES MÁXIMAS (C x L x E): ${dim_max_c || 'N/A'} x ${dim_max_l || 'N/A'} x ${dim_max_e || 'N/A'} mm\n`;
+                dimensoesContent += `DIMENSÕES MÍNIMAS (C x L x E): ${dim_min_c || 'N/A'} x ${dim_min_l || 'N/A'} x ${dim_min_e || 'N/A'} mm\n\n`;
+            }
+
+            const fields = section.querySelectorAll('input, select, textarea');
+            fields.forEach(field => {
+                const name = field.name;
+                // Ignora campos sem nome, já processados ou os novos campos de dimensão padrão
+                if (!name || processedFields.has(name) || name.includes('_dim_')) return;
+
+                // IMPORTANTE: Verificar se o valor existe no data antes de processar
+                let value = data[name];
+                
+                // Se o valor não existe ou está vazio, pular este campo
+                if (value === undefined || value === '' || value === null || (Array.isArray(value) && value.length === 0)) {
+                    return;
+                }
+
+                const title = FIELD_TITLES[name];
+
+                // Para campos de checkbox, juntar valores em array
+                if (field.type === 'checkbox' && Array.isArray(value)) {
+                    value = value.join('; ');
+                }
+
+                processedFields.add(name);
+                sectionFilled = true;
+
+                if (title) {
+                    sectionContent += `${title}: ${value}\n`;
+                } else {
+                    sectionContent += `${name}: ${value}\n`;
+                }
+            });
+
+            // Só adiciona a seção se houver conteúdo real (não apenas dimensões)
+            if (sectionFilled) {
+                content += `========================================\n`;
+                content += `== MÁQUINA: ${maquina.toUpperCase()} ==\n`;
+                content += `========================================\n`;
+                // Adiciona as dimensões primeiro (se existirem)
+                if (dimensoesContent) {
+                    content += dimensoesContent;
+                }
+                // Depois adiciona o resto do conteúdo
+                content += sectionContent.trim() + '\n\n';
+                hasContent = true;
+            }
+        });
+
+        if (!hasContent) {
+            content += 'Nenhuma seção de máquina foi preenchida.\n';
+        }
+
+        content += '--- FIM DO QUESTIONÁRIO ---\n';
+        return content;
+    }
+
+    // Função principal de download
+    function downloadFile() {
+        saveForm(); // Salva antes de baixar
+
+        const form = document.getElementById('questionario-form');
+        const formData = new FormData(form);
+        const data = {};
+        
+        // Coletar dados do formulário, tratando arquivos corretamente e filtrando vazios
+        for (let [key, value] of formData.entries()) {
+            // Se o valor for um arquivo
+            if (value instanceof File) {
+                // Ignorar arquivos não selecionados (sem nome ou tamanho 0)
+                if (!value.name || value.size === 0) {
+                    continue; // Pula este campo
+                }
+                // Extrair apenas o nome do arquivo
+                value = value.name;
+            }
+            
+            // Ignorar campos vazios
+            if (value === '' || value === null || value === undefined) {
+                continue;
+            }
+            
+            if (data[key]) {
+                if (Array.isArray(data[key])) {
+                    data[key].push(value);
+                } else {
+                    data[key] = [data[key], value];
+                }
+            } else {
+                data[key] = value;
+            }
+        }
+
+        const fileContent = generateTextFile(data);
+
+        const blob = new Blob([fileContent], { type: 'text/plain;charset=utf-8' });
+        const a = document.createElement('a');
+        a.href = URL.createObjectURL(blob);
+        a.download = 'Questionario_NEX_Preenchido.txt';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+
+        alert('As respostas foram salvas e o arquivo Questionario_NEX_Preenchido.txt foi baixado. Por favor, envie este arquivo para a NEX.');
+    }
+
+    // Função para fazer upload de arquivo .dwg para catbox.moe
+    async function uploadDWGToFileIO(file) {
+        const formData = new FormData();
+        formData.append('reqtype', 'fileupload');
+        formData.append('fileToUpload', file);
+
+        try {
+            // Usando catbox.moe que aceita requisições de origem null e é mais confiável
+            const response = await fetch('https://catbox.moe/user/api.php', {
+                method: 'POST',
+                body: formData
+            });
+
+            if (!response.ok) {
+                throw new Error(`Erro HTTP: ${response.status}`);
+            }
+
+            const downloadUrl = await response.text();
+            
+            console.log('Resposta do catbox.moe:', downloadUrl);
+
+            // catbox.moe retorna diretamente a URL: "https://files.catbox.moe/abc123.dwg"
+            if (downloadUrl && downloadUrl.startsWith('https://')) {
+                return downloadUrl;
+            } else {
+                throw new Error('Falha no upload do arquivo .dwg');
+            }
+        } catch (error) {
+            console.error('Erro ao fazer upload do .dwg:', error);
+            alert('❌ Erro ao fazer upload do arquivo .dwg.\n\nDetalhes: ' + error.message + '\n\nO e-mail será enviado sem o link do arquivo.');
+            return null;
+        }
+    }
+
+    // Função para enviar por e-mail
+    async function sendEmail() {
+        // Verificar se EmailJS está configurado
+        if (typeof emailjs === 'undefined') {
+            alert('Sistema de e-mail não configurado.\n\nPara configurar:\n1. Crie uma conta em https://www.emailjs.com/\n2. Configure um serviço de e-mail\n3. Crie um template\n4. Adicione as credenciais no código HTML\n\nPor enquanto, use o botão "Salvar Respostas e Baixar Arquivo".');
+            return;
+        }
+
+        const form = document.getElementById('questionario-form');
+        const formData = new FormData(form);
+        const data = {};
+
+        // Coletar dados do formulário, tratando arquivos corretamente e filtrando vazios
+        for (let [key, value] of formData.entries()) {
+            // Se o valor for um arquivo
+            if (value instanceof File) {
+                // Ignorar arquivos não selecionados (sem nome ou tamanho 0)
+                if (!value.name || value.size === 0) {
+                    continue; // Pula este campo
+                }
+                // Extrair apenas o nome do arquivo
+                value = value.name;
+            }
+            
+            // Ignorar campos vazios
+            if (value === '' || value === null || value === undefined) {
+                continue;
+            }
+            
+            if (data[key]) {
+                if (Array.isArray(data[key])) {
+                    data[key].push(value);
+                } else {
+                    data[key] = [data[key], value];
+                }
+            } else {
+                data[key] = value;
+            }
+        }
+
+        // Verificar se há arquivo .dwg e fazer upload
+        const dwgInput = document.getElementById('automacao_dwg');
+        let dwgLink = null;
+
+        if (dwgInput && dwgInput.files && dwgInput.files.length > 0) {
+            const confirmUpload = confirm('Deseja fazer upload do arquivo .dwg agora? Isso pode levar alguns instantes.');
+            if (confirmUpload) {
+                alert('Fazendo upload do arquivo .dwg... Por favor, aguarde.');
+                dwgLink = await uploadDWGToFileIO(dwgInput.files[0]);
+
+                if (dwgLink) {
+                    alert('Upload do .dwg concluído! O link será incluído no e-mail.');
+                } else {
+                    alert('Não foi possível fazer upload do arquivo .dwg. O e-mail será enviado sem o link do arquivo.');
+                }
+            }
+        }
+
+        // Gerar arquivo de texto
+        let fileContent = generateTextFile(data);
+
+        // Adicionar informação do .dwg ao conteúdo
+        if (dwgLink) {
+            fileContent += '\n\n' + '='.repeat(80) + '\n';
+            fileContent += 'ARQUIVO .DWG (LAYOUT DA FÁBRICA)\n';
+            fileContent += '='.repeat(80) + '\n\n';
+            fileContent += `Link para download: ${dwgLink}\n\n`;
+            fileContent += 'IMPORTANTE: O link é válido por 1 ano. Baixe quando necessário.\n';
+        }
+
+        // Enviar e-mail via EmailJS
+        const templateParams = {
+            to_email: 'luca@nex.eco.br',
+            from_name: data['cliente_nome'] || 'Cliente',
+            reply_to: data['cliente_email'] || 'nao-informado@exemplo.com',
+            company: data['cliente_empresa'] || 'Não informado',
+            message: fileContent,
+            dwg_link: dwgLink || 'Nenhum arquivo .dwg enviado'
+        };
+
+        try {
+            await emailjs.send('service_ocm5oga', 'template_7vthp4q', templateParams, 'dYgCUjz1O8EqE9rM2');
+            
+            // Mensagem de sucesso
+            alert('✅ E-mail enviado com sucesso!\n\nSuas respostas foram enviadas para luca@nex.eco.br.' + (dwgLink ? '\n\nO link do arquivo .dwg foi incluído no e-mail.' : ''));
+
+        } catch (error) {
+            console.error('Erro ao enviar e-mail:', error);
+            alert('❌ Erro ao enviar e-mail.\n\nDetalhes: ' + (error.text || error.message || 'Erro desconhecido') + '\n\nPor favor, tente novamente ou use o botão "Salvar Respostas e Baixar Arquivo".'); 
+        }
+    }
+
+    // Event Listeners
+    document.addEventListener('DOMContentLoaded', () => {
+        loadForm(); // Carrega os dados ao iniciar
+
+        // Salva os dados a cada alteração
+        document.getElementById('questionario-form').addEventListener('input', saveForm);
+
+        // Botão de download
+        document.getElementById('download-btn').addEventListener('click', downloadFile);
+
+        // Botão de e-mail
+        document.getElementById('email-btn').addEventListener('click', sendEmail);
+    });
+</script>
+</body>
+</html>
