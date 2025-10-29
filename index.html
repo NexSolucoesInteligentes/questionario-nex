@@ -1360,15 +1360,14 @@
         alert('As respostas foram salvas e o arquivo Questionario_NEX_Preenchido.txt foi baixado. Por favor, envie este arquivo para a NEX.');
     }
 
-    // Função para fazer upload de arquivo .dwg para catbox.moe
+    // Função para fazer upload de arquivo .dwg para 0x0.st
     async function uploadDWGToFileIO(file) {
         const formData = new FormData();
-        formData.append('reqtype', 'fileupload');
-        formData.append('fileToUpload', file);
+        formData.append('file', file);
 
         try {
-            // Usando catbox.moe que aceita requisições de origem null e é mais confiável
-            const response = await fetch('https://catbox.moe/user/api.php', {
+            // Usando 0x0.st que tem suporte completo a CORS
+            const response = await fetch('https://0x0.st', {
                 method: 'POST',
                 body: formData
             });
@@ -1379,11 +1378,11 @@
 
             const downloadUrl = await response.text();
             
-            console.log('Resposta do catbox.moe:', downloadUrl);
+            console.log('Resposta do 0x0.st:', downloadUrl);
 
-            // catbox.moe retorna diretamente a URL: "https://files.catbox.moe/abc123.dwg"
-            if (downloadUrl && downloadUrl.startsWith('https://')) {
-                return downloadUrl;
+            // 0x0.st retorna diretamente a URL: "https://0x0.st/abc.dwg"
+            if (downloadUrl && downloadUrl.trim().startsWith('https://')) {
+                return downloadUrl.trim();
             } else {
                 throw new Error('Falha no upload do arquivo .dwg');
             }
