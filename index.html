@@ -1360,21 +1360,16 @@
         alert('As respostas foram salvas e o arquivo Questionario_NEX_Preenchido.txt foi baixado. Por favor, envie este arquivo para a NEX.');
     }
 
-    // Função para fazer upload de arquivo .dwg via backend API
+    // Função para fazer upload de arquivo .dwg via GoFile.io
     async function uploadDWGToFileIO(file) {
         const formData = new FormData();
         formData.append('file', file);
 
         try {
-            // IMPORTANTE: Substitua esta URL pela URL do seu backend no Vercel
-            // Exemplo: https://nex-backend-abc123.vercel.app/api/upload
-            const BACKEND_URL = 'https://nex-backend-one.vercel.app/api/upload';
+            console.log('Iniciando upload para GoFile.io...');
+            console.log('Arquivo:', file.name, 'Tamanho:', file.size, 'bytes');
             
-            if (BACKEND_URL === 'SEU_BACKEND_URL_AQUI/api/upload') {
-                throw new Error('Configure a URL do backend! Veja as instruções no README.');
-            }
-
-            const response = await fetch(BACKEND_URL, {
+            const response = await fetch('https://upload.gofile.io/uploadfile', {
                 method: 'POST',
                 body: formData
             });
@@ -1385,10 +1380,10 @@
 
             const result = await response.json();
             
-            console.log('Resposta do backend:', result);
+            console.log('Resposta do GoFile.io:', result);
 
-            if (result.success && result.url) {
-                return result.url;
+            if (result.status === 'ok' && result.data && result.data.downloadPage) {
+                return result.data.downloadPage;
             } else {
                 throw new Error(result.error || 'Falha no upload do arquivo .dwg');
             }
@@ -1466,7 +1461,7 @@
             fileContent += 'ARQUIVO .DWG (LAYOUT DA FÁBRICA)\n';
             fileContent += '='.repeat(80) + '\n\n';
             fileContent += `Link para download: ${dwgLink}\n\n`;
-            fileContent += 'IMPORTANTE: O link é válido por 1 ano. Baixe quando necessário.\n';
+            fileContent += 'IMPORTANTE: Baixe o arquivo o mais rápido possível. Links de arquivos grandes podem expirar.\n';
         }
 
         // Enviar e-mail via EmailJS
