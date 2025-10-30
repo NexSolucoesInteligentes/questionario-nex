@@ -1720,7 +1720,7 @@
 
         // Enviar e-mail via EmailJS
         const templateParams = {
-            to_email: 'luca@nex.eco.br',
+            to_email: 'nex@nex.eco.br',
             from_name: data['cliente_nome'] || 'Cliente',
             reply_to: data['cliente_email'] || 'nao-informado@exemplo.com',
             company: data['cliente_empresa'] || 'Não informado',
@@ -1733,7 +1733,7 @@
             
             // Mensagem de sucesso
             const numArquivos = Object.keys(linksArquivos).length;
-            let mensagemSucesso = '✅ E-mail enviado com sucesso!\n\nSuas respostas foram enviadas para luca@nex.eco.br.';
+            let mensagemSucesso = '✅ E-mail enviado com sucesso!\n\nSuas respostas foram enviadas para nex@nex.eco.br.';
             
             if (numArquivos > 0) {
                 mensagemSucesso += `\n\n${numArquivos} arquivo(s) foram incluídos no e-mail.`;
