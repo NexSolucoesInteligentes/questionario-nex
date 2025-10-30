@@ -1022,8 +1022,16 @@
 </div>
 
 <script>
+    // ========================================
+    // CONFIGURAÇÕES DO QUESTIONÁRIO
+    // ========================================
+    const CONFIG = {
+        EMAIL_DESTINATARIO: 'luca@nex.eco.br'  // ← Mude aqui quando precisar
+    };
+
     // Mapeamento de nomes de campos para títulos de perguntas
     const FIELD_TITLES = {
+
         // Cabeçalho
         'cliente_nome': 'Nome do Cliente',
         'cliente_empresa': 'Empresa',
@@ -1502,7 +1510,7 @@
 
         // Enviar e-mail via EmailJS
         const templateParams = {
-            to_email: 'luca@nex.eco.br',
+            to_email: CONFIG.EMAIL_DESTINATARIO,
             from_name: data['cliente_nome'] || 'Cliente',
             reply_to: data['cliente_email'] || 'nao-informado@exemplo.com',
             company: data['cliente_empresa'] || 'Não informado',
@@ -1515,8 +1523,7 @@
             
             // Mensagem de sucesso
             const numArquivos = Object.keys(linksArquivos).length;
-            let mensagemSucesso = '✅ E-mail enviado com sucesso!\n\nSuas respostas foram enviadas para luca@nex.eco.br.';
-            
+            let mensagemSucesso = `✅ E-mail enviado com sucesso!\n\nSuas respostas foram enviadas para ${CONFIG.EMAIL_DESTINATARIO}.`;
             if (numArquivos > 0) {
                 mensagemSucesso += `\n\n${numArquivos} arquivo(s) foram incluídos no e-mail.`;
             }
