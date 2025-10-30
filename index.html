@@ -59,12 +59,14 @@
         }
         nav#sumario ul li a {
             text-decoration: none;
-            color: #E0E0E0;
+            color: #9ACA95;
             display: block;
-            transition: background-color 0.3s;
+            font-weight: bold;
+            transition: all 0.3s ease;
         }
         nav#sumario ul li a:hover {
             background-color: #3a4853; /* Cor de destaque */
+            transform: translateX(10px);
         }
         .secao {
             padding: 20px;
@@ -152,7 +154,7 @@
 <body>
 <div class="container">
     <header>
-        <h1>Questionário NEX - Soluções Inteligentes para a Indústria do Vidro</h1>
+        <h1>Questionário NEX - Soluções Inteligentes para Sistemas Vítreos</h1>
         <p>Preencha as informações relevantes para o seu processo de cotação. Utilize o sumário para navegar entre as máquinas.</p>
     </header>
 
@@ -160,14 +162,14 @@
         <h2>Sumário de Máquinas</h2>
         <ul>
             <li><a href="#mesa-corte">1. Linha de Corte (Mesa de Corte)</a></li>
-            <li><a href="#laser-sf">2. Laser Super Fast</a></li>
-            <li><a href="#laser-low-e">3. Laser Desbaste LOW-E</a></li>
-            <li><a href="#lavadora">4. Lavadora (Horizontal e Vertical)</a></li>
-            <li><a href="#bilateral">5. Bilateral</a></li>
-            <li><a href="#retilinea">6. Lapidadora vertical / Bizeladora</a></li>
-            <li><a href="#cnc-horizontal">7. CNC Horizontal</a></li>
-            <li><a href="#cnc-vertical">8. CNC Vertical</a></li>
-            <li><a href="#fast-cnc">9. CNC de Lapidação Rápida (Fast CNC)</a></li>
+            <li><a href="#bilateral">2. Bilateral</a></li>
+            <li><a href="#retilinea">3. Lapidadora vertical / Biseladora</a></li>
+            <li><a href="#cnc-horizontal">4. CNC Horizontal</a></li>
+            <li><a href="#cnc-vertical">5. CNC Vertical</a></li>
+            <li><a href="#fast-cnc">6. CNC de Lapidação Rápida (Fast CNC)</a></li>
+            <li><a href="#lavadora">7. Lavadora (Horizontal e Vertical)</a></li>
+            <li><a href="#laser-sf">8. Laser Super Fast</a></li>
+            <li><a href="#laser-low-e">9. Laser Desbaste LOW-E</a></li>
             <li><a href="#laser-galvo">10. Laser Galvo Furação</a></li>
             <li><a href="#serigrafia">11. Serigrafia</a></li>
             <li><a href="#tempera">12. Forno de Têmpera</a></li>
@@ -178,26 +180,6 @@
     </nav>
 
     <form id="questionario-form">
-
-        <!-- SEÇÃO DADOS DO CLIENTE (NOVO) -->
-        <div id="dados-cliente" class="secao" data-maquina="Dados do Cliente">
-            <h2>Dados do Cliente</h2>
-            <p>Preencha as informações de contato para que a NEX possa retornar o contato.</p>
-
-            <div class="campo">
-                <label for="cliente_nome">Nome do Cliente:</label>
-                <input type="text" id="cliente_nome" name="cliente_nome" placeholder="Nome Completo" required>
-            </div>
-            <div class="campo">
-                <label for="cliente_empresa">Empresa:</label>
-                <input type="text" id="cliente_empresa" name="cliente_empresa" placeholder="Nome da Empresa" required>
-            </div>
-            <div class="campo">
-                <label for="cliente_email">Email:</label>
-                <input type="email" id="cliente_email" name="cliente_email" placeholder="email@exemplo.com" required>
-            </div>
-        </div>
-        <!-- FIM SEÇÃO DADOS DO CLIENTE -->
 
         <!-- SEÇÃO BILATERAL -->
         <div id="bilateral" class="secao" data-maquina="Bilateral">
@@ -496,17 +478,12 @@
             <!-- FIM DIMENSÕES OBRIGATÓRIAS -->
 
             <div class="campo">
-                <label for="cnc_v_q1">1 - Qual o tipo de CNC Vertical?</label>
-                <input type="text" id="cnc_v_q1" name="cnc_v_q1" placeholder="Descreva o tipo">
-            </div>
-
-            <div class="campo">
-                <label for="cnc_v_q2_ferramentas">2 - Quantidade de ferramentas de troca automática:</label>
+                <label for="cnc_v_q2_ferramentas">1 - Quantidade de ferramentas de troca automática:</label>
                 <input type="number" id="cnc_v_q2_ferramentas" name="cnc_v_q2_ferramentas" placeholder="Quantidade (somente números)">
             </div>
 
             <div class="campo">
-                <label>3 - Se offline, deseja carga e descarga automática?</label>
+                <label>2 - Se offline, deseja carga e descarga automática?</label>
                 <div><input type="radio" id="cnc_v_q3_sim" name="cnc_v_q3" value="Sim"> <label for="cnc_v_q3_sim" style="display: inline; margin-left: 5px;">Sim</label></div>
                 <div><input type="radio" id="cnc_v_q3_nao" name="cnc_v_q3" value="Não"> <label for="cnc_v_q3_nao" style="display: inline; margin-left: 5px;">Não</label></div>
             </div>
@@ -600,7 +577,7 @@
 
                 <!-- BLOCO MESA TOMBADORA/BRAÇO ROBÓTICO -->
                 <div class="campo">
-                    <label>11 - Com mesa tombadoura?</label>
+                    <label>11 - Com mesa tombadora?</label>
                     <div><input type="radio" id="mesa_corte_q11_sim" name="mesa_corte_q11_tombadora" value="Sim"> <label for="mesa_corte_q11_sim" style="display: inline; margin-left: 5px;">Sim</label></div>
                     <div><input type="radio" id="mesa_corte_q11_nao" name="mesa_corte_q11_tombadora" value="Não"> <label for="mesa_corte_q11_nao" style="display: inline; margin-left: 5px;">Não</label></div>
                 </div>
@@ -676,8 +653,8 @@
                 </div>
             </div>
             <!-- FIM SEÇÃO LAVADORA -->            <!-- SEÇÃO RETILÍNEA -->
-            <div id="retilinea" class="secao" data-maquina="Lapidadora vertical / Bizeladora">
-                <h2>Lapidadora vertical / Bizeladora</h2>
+            <div id="retilinea" class="secao" data-maquina="Lapidadora vertical / Biseladora">
+                <h2>Lapidadora vertical / Biseladora</h2>
                 <p>Máquina para lapidação vertical e biselamento.</p>
                 <!-- DIMENSÕES OBRIGATÓRIAS -->
                 <div class="campo">
@@ -708,13 +685,15 @@
                 </div>
 
                 <div class="campo">
-                    <label for="retilinea_q3">3 - Precisará de virador (turnover)?</label>
-                    <input type="text" id="retilinea_q3" name="retilinea_q3" placeholder="Sim/Não">
+                    <label>3 - Precisará de virador (turnover)?</label>
+                    <div><input type="radio" id="retilinea_q3_sim" name="retilinea_q3" value="Sim"> <label for="retilinea_q3_sim" style="display: inline; margin-left: 5px;">Sim</label></div>
+                    <div><input type="radio" id="retilinea_q3_nao" name="retilinea_q3" value="Não"> <label for="retilinea_q3_nao" style="display: inline; margin-left: 5px;">Não</label></div>
                 </div>
 
                 <div class="campo">
-                    <label for="retilinea_q4">4 - Precisa de carregador e descarregador?</label>
-                    <input type="text" id="retilinea_q4" name="retilinea_q4" placeholder="Sim/Não">
+                    <label>4 - Precisa de carregador e descarregador?</label>
+                    <div><input type="radio" id="retilinea_q4_sim" name="retilinea_q4" value="Sim"> <label for="retilinea_q4_sim" style="display: inline; margin-left: 5px;">Sim</label></div>
+                    <div><input type="radio" id="retilinea_q4_nao" name="retilinea_q4" value="Não"> <label for="retilinea_q4_nao" style="display: inline; margin-left: 5px;">Não</label></div>
                 </div>
             </div>
             <!-- FIM SEÇÃO RETILÍNEA -->
@@ -826,14 +805,14 @@
                 </div>
 
                 <div class="campo">
-                    <label for="laminado_q2_espessura_final">2 - Espessura final (mm):</label>
-                    <input type="number" id="laminado_q2_espessura_final" name="laminado_q2_espessura_final" placeholder="Espessura final em mm (somente números)">
+                    <label>2 - PVB ou EVA?</label>
+                    <div><input type="radio" id="laminado_q3_pvb" name="laminado_q3_tipo" value="PVB"> <label for="laminado_q3_pvb" style="display: inline; margin-left: 5px;">PVB</label></div>
+                    <div><input type="radio" id="laminado_q3_eva" name="laminado_q3_tipo" value="EVA"> <label for="laminado_q3_eva" style="display: inline; margin-left: 5px;">EVA</label></div>
                 </div>
 
                 <div class="campo">
-                    <label>3 - PVB ou EVA?</label>
-                    <div><input type="radio" id="laminado_q3_pvb" name="laminado_q3_tipo" value="PVB"> <label for="laminado_q3_pvb" style="display: inline; margin-left: 5px;">PVB</label></div>
-                    <div><input type="radio" id="laminado_q3_eva" name="laminado_q3_tipo" value="EVA"> <label for="laminado_q3_eva" style="display: inline; margin-left: 5px;">EVA</label></div>
+                    <label for="laminado_q6_eva_gavetas">3 - Se EVA, quantas gavetas?</label>
+                    <input type="number" id="laminado_q6_eva_gavetas" name="laminado_q6_eva_gavetas" placeholder="Quantidade de gavetas (somente números)">
                 </div>
 
                 <div class="campo">
@@ -847,11 +826,6 @@
                 <div class="campo">
                     <label for="laminado_q5_conectores">5 - Se PVB, qual a quantidade de conectores de vácuo para vidros curvos:</label>
                     <input type="number" id="laminado_q5_conectores" name="laminado_q5_conectores" placeholder="Quantidade de conectores (somente números)">
-                </div>
-
-                <div class="campo">
-                    <label for="laminado_q6_eva_gavetas">6 - Se EVA, quantas gavetas?</label>
-                    <input type="number" id="laminado_q6_eva_gavetas" name="laminado_q6_eva_gavetas" placeholder="Quantidade de gavetas (somente números)">
                 </div>
 
                 <div class="campo">
@@ -1006,7 +980,7 @@
                         <label><input type="checkbox" name="automacao_maquinas" value="Laser Desbaste LOW-E"> Laser Desbaste LOW-E</label>
                         <label><input type="checkbox" name="automacao_maquinas" value="Lavadora"> Lavadora (Horizontal e Vertical)</label>
                         <label><input type="checkbox" name="automacao_maquinas" value="Bilateral"> Bilateral</label>
-                        <label><input type="checkbox" name="automacao_maquinas" value="Lapidadora vertical / Bizeladora"> Lapidadora vertical / Bizeladora</label>
+                        <label><input type="checkbox" name="automacao_maquinas" value="Lapidadora vertical / Biseladora"> Lapidadora vertical / Biseladora</label>
                         <label><input type="checkbox" name="automacao_maquinas" value="CNC Horizontal"> CNC Horizontal</label>
                         <label><input type="checkbox" name="automacao_maquinas" value="CNC Vertical"> CNC Vertical</label>
                         <label><input type="checkbox" name="automacao_maquinas" value="CNC de Lapidação Rápida (Fast CNC)"> CNC de Lapidação Rápida (Fast CNC)</label>
@@ -1019,6 +993,26 @@
                 </div>
             </div>
             <!-- FIM SEÇÃO AUTOMAÇÃO -->
+
+            <!-- SEÇÃO DADOS DO CLIENTE -->
+            <div id="dados-cliente" class="secao" data-maquina="Dados do Cliente">
+                <h2>Dados do Cliente</h2>
+                <p>Preencha as informações de contato para que a NEX possa retornar o contato.</p>
+
+                <div class="campo">
+                    <label for="cliente_nome">Nome do Cliente:</label>
+                    <input type="text" id="cliente_nome" name="cliente_nome" placeholder="Nome Completo" required>
+                </div>
+                <div class="campo">
+                    <label for="cliente_empresa">Empresa:</label>
+                    <input type="text" id="cliente_empresa" name="cliente_empresa" placeholder="Nome da Empresa" required>
+                </div>
+                <div class="campo">
+                    <label for="cliente_email">Email:</label>
+                    <input type="email" id="cliente_email" name="cliente_email" placeholder="email@exemplo.com" required>
+                </div>
+            </div>
+            <!-- FIM SEÇÃO DADOS DO CLIENTE -->
 
             <div class="botoes">
                 <button type="button" id="download-btn">Salvar Respostas e Baixar Arquivo</button>
