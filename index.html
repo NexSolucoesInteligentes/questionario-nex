@@ -1394,7 +1394,7 @@
         }
     }
 
-    // Função para enviar por e-mail
+    // Função para enviar por e-mail (com upload de TODOS os arquivos)
     async function sendEmail() {
         // Verificar se EmailJS está configurado
         if (typeof emailjs === 'undefined') {
@@ -1405,6 +1405,7 @@
         const form = document.getElementById('questionario-form');
         const formData = new FormData(form);
         const data = {};
+        const arquivosParaUpload = []; // Array para armazenar arquivos que precisam de upload
 
         // Coletar dados do formulário, tratando arquivos corretamente e filtrando vazios
         for (let [key, value] of formData.entries()) {
@@ -1414,7 +1415,12 @@
                 if (!value.name || value.size === 0) {
                     continue; // Pula este campo
                 }
-                // Extrair apenas o nome do arquivo
+                // Guardar arquivo para upload posterior
+                arquivosParaUpload.push({
+                    fieldName: key,
+                    file: value
+                });
+                // Extrair apenas o nome do arquivo para o data
                 value = value.name;
             }
             
@@ -1434,35 +1440,70 @@
             }
         }
 
-        // Verificar se há arquivo .dwg e fazer upload
-        const dwgInput = document.getElementById('automacao_dwg');
-        let dwgLink = null;
-
-        if (dwgInput && dwgInput.files && dwgInput.files.length > 0) {
-            const confirmUpload = confirm('Deseja fazer upload do arquivo .dwg agora? Isso pode levar alguns instantes.');
+        // Se houver arquivos para upload, perguntar ao usuário
+        let linksArquivos = {};
+        
+        if (arquivosParaUpload.length > 0) {
+            const confirmUpload = confirm(`Foram detectados ${arquivosParaUpload.length} arquivo(s) anexado(s).\n\nDeseja fazer upload agora? Isso pode levar alguns instantes.`);
+            
             if (confirmUpload) {
-                alert('Fazendo upload do arquivo .dwg... Por favor, aguarde.');
-                dwgLink = await uploadDWGToFileIO(dwgInput.files[0]);
-
-                if (dwgLink) {
-                    alert('Upload do .dwg concluído! O link será incluído no e-mail.');
-                } else {
-                    alert('Não foi possível fazer upload do arquivo .dwg. O e-mail será enviado sem o link do arquivo.');
+                alert(`Fazendo upload de ${arquivosParaUpload.length} arquivo(s)... Por favor, aguarde.\n\nNÃO FECHE ESTA PÁGINA!`);
+                
+                // Fazer upload de cada arquivo
+                for (let i = 0; i < arquivosParaUpload.length; i++) {
+                    const item = arquivosParaUpload[i];
+                    console.log(`Fazendo upload do arquivo ${i + 1}/${arquivosParaUpload.length}: ${item.file.name}`);
+                    
+                    try {
+                        const link = await uploadDWGToFileIO(item.file);
+                        if (link) {
+                            linksArquivos[item.fieldName] = {
+                                nome: item.file.name,
+                                link: link
+                            };
+                            console.log(`✅ Upload ${i + 1}/${arquivosParaUpload.length} concluído!`);
+                        } else {
+                            console.log(`❌ Falha no upload ${i + 1}/${arquivosParaUpload.length}`);
+                        }
+                    } catch (error) {
+                        console.error(`Erro no upload do arquivo ${item.file.name}:`, error);
+                    }
                 }
+                
+                const uploadsSucesso = Object.keys(linksArquivos).length;
+                alert(`Upload concluído!\n\n${uploadsSucesso} de ${arquivosParaUpload.length} arquivo(s) foram enviados com sucesso.`);
             }
         }
 
         // Gerar arquivo de texto
         let fileContent = generateTextFile(data);
 
-        // Adicionar informação do .dwg ao conteúdo
-        if (dwgLink) {
+        // Adicionar seção de arquivos anexados se houver links
+        if (Object.keys(linksArquivos).length > 0) {
             fileContent += '\n\n' + '='.repeat(80) + '\n';
-            fileContent += 'ARQUIVO .DWG (LAYOUT DA FÁBRICA)\n';
+            fileContent += 'ARQUIVOS ANEXADOS\n';
             fileContent += '='.repeat(80) + '\n\n';
-            fileContent += `Link para download: ${dwgLink}\n\n`;
-            fileContent += 'IMPORTANTE: Baixe o arquivo o mais rápido possível. Links de arquivos grandes podem expirar.\n';
+            
+            // Mapear nomes dos campos para títulos legíveis
+            const titulosArquivos = {
+                'laser_low_e_desenhos_especiais': 'LASER DESBASTE LOW-E - Desenhos Especiais',
+                'laser_galvo_desenhos_especiais': 'LASER GALVO FURAÇÃO - Desenhos Especiais',
+                'fast_cnc_q4_desenhos': 'FAST CNC - Desenhos Especiais',
+                'automacao_dwg': 'AUTOMAÇÃO - Arquivo .dwg (Layout da Fábrica)'
+            };
+            
+            for (let [fieldName, info] of Object.entries(linksArquivos)) {
+                const titulo = titulosArquivos[fieldName] || fieldName;
+                fileContent += `${titulo}:\n`;
+                fileContent += `- Nome do arquivo: ${info.nome}\n`;
+                fileContent += `- Link para download: ${info.link}\n\n`;
+            }
+            
+            fileContent += 'IMPORTANTE: Baixe os arquivos o mais rápido possível. Links de arquivos grandes podem expirar.\n';
         }
+
+        // Preparar link do .dwg para o template (compatibilidade com template atual)
+        const dwgLink = linksArquivos['automacao_dwg'] ? linksArquivos['automacao_dwg'].link : null;
 
         // Enviar e-mail via EmailJS
         const templateParams = {
@@ -1478,7 +1519,14 @@
             await emailjs.send('service_ocm5oga', 'template_7vthp4q', templateParams, 'dYgCUjz1O8EqE9rM2');
             
             // Mensagem de sucesso
-            alert('✅ E-mail enviado com sucesso!\n\nSuas respostas foram enviadas para luca@nex.eco.br.' + (dwgLink ? '\n\nO link do arquivo .dwg foi incluído no e-mail.' : ''));
+            const numArquivos = Object.keys(linksArquivos).length;
+            let mensagemSucesso = '✅ E-mail enviado com sucesso!\n\nSuas respostas foram enviadas para luca@nex.eco.br.';
+            
+            if (numArquivos > 0) {
+                mensagemSucesso += `\n\n${numArquivos} arquivo(s) foram incluídos no e-mail.`;
+            }
+            
+            alert(mensagemSucesso);
 
         } catch (error) {
             console.error('Erro ao enviar e-mail:', error);
